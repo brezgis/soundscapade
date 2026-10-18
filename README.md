@@ -12,13 +12,14 @@ It opens straight onto a random channel and a random sound. Click anywhere for s
 | **Below** | a reef, orcas, a humpback, bearded seals, a blue whale, a singing iceberg, an iceberg breaking up, the Upsweep, the Bloop | layered underwater panorama, descending |
 | **Wild** | gibbons, howler monkeys, a bellbird, a lyrebird, spadefoot toads, loons, a nightingale, higurashi | layered panorama, dawn to dusk |
 | **Cities** | Venice at dawn, cafés in Istanbul and Greenland, Cairo's market, Marrakech, Hong Kong harbour, the Seoul subway, the Moscow metro | real photographs and generated scenes, joined by dark "tunnels" |
-| **Voices** | the 1860 phonautograph, Brahms, Tennyson, Florence Nightingale, the Voyager greetings, Tuvan overtone singing, whistled Yoruba | archival photographs along a timeline |
 | **Signals** | the Wow! signal, aurora natural radio, the Tōhoku earthquake, the Buzzer, the Gong, Cherry Ripe, the German lady | listening posts, with the signal itself drawn in: a live spectrogram, a seismograph trace, the 6EQUJ5 printout, numbers surfacing |
 | **Now** | live Locus Sonus open microphones in Kyoto, Amsterdam, Bristol, Brussels, the Alps and Jeju | a globe that turns to the microphone |
 
+(A seventh channel, **Voices**, with the oldest recorded voices, is in the code but switched off with `hidden: true` in `js/channels.js`.)
+
 Every caption is quoted from a real source (NASA, NOAA, the National Park Service, the BBC catalogue, the recordists' notes, Wikipedia) and says whose words and whose recording it is.
 
-Keys: `1`–`7` channels · `→` or `n` next sound · `↑`/`↓` neighbouring channel · `m` mute.
+Keys: `1`–`6` channels · `→` or `n` next sound · `↑`/`↓` neighbouring channel · `m` mute.
 
 ## Run it
 

@@ -3,7 +3,8 @@
 // mode 'events' — a short clip that recurs with silences between, like a call in the distance
 // mode 'live'   — a Locus Sonus open-microphone stream
 
-export const CHANNELS = [
+// Every channel, including any switched off with `hidden: true`.
+const ALL = [
   {
     id: 'above',
     name: 'Above',
@@ -348,6 +349,7 @@ export const CHANNELS = [
   },
   {
     id: 'voices',
+    hidden: true,   // switched off for now: it doesn't quite fit the soundscape idea
     name: 'Voices',
     blurb: 'people across time and language',
     bed: null,
@@ -507,4 +509,6 @@ export const CHANNELS = [
 ];
 
 // Locus Sonus serves the same streams over https on 9443, so they work on an https page
+export const CHANNELS = ALL.filter((c) => !c.hidden);
+
 export const LIVE_BASE = 'https://locus.creacast.com:9443/';
