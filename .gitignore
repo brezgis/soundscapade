@@ -1,0 +1,14 @@
+# working material, kept locally
+art/raw/
+art/real/
+art/trial/
+audition/
+ui-*.html
+js/ui-*.js
+js/main-classic.js
+ui-shots/
+sounds/bladder-cicada.mp3
+sounds/dawn-chorus.mp3
+sounds/thunder.mp3
+__pycache__/
+.DS_Store
