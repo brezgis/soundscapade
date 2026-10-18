@@ -481,7 +481,7 @@ export const CHANNELS = [
       },
       {
         file: 'g06-station', mode: 'loop',
-        art: { img: 'art/signals/g06-station-back.webp', front: 'art/signals/g06-station-front.webp', fx: [{ type: 'rain', n: 120, alpha: 0.1 }, { type: 'glow', x: 0.57, y: 0.6, r: 0.14, color: '255,190,110', alpha: 0.06, react: 0.35 }, { type: 'digits', region: [0.3, 0.1, 0.75, 0.4], color: '255,214,160', alpha: 0.45 }] },
+        art: { img: 'art/signals/g06-station-back.webp', front: 'art/signals/g06-station-front.webp', fx: [{ type: 'rain', n: 120, alpha: 0.1 }, { type: 'glow', x: 0.8, y: 0.66, r: 0.12, color: '255,190,110', alpha: 0.06, react: 0.35 }, { type: 'digits', region: [0.3, 0.1, 0.75, 0.4], color: '255,214,160', alpha: 0.45 }] },
         title: 'The German lady',
         place: 'numbers station G06 · 2018',
         about: 'G06 is the German language mode of the Russian 6 operator. Most of its schedules were retired at the end of 2019, before being fully retired from regular operation in March 2021.',
