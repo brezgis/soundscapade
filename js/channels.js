@@ -9,11 +9,11 @@ export const CHANNELS = [
     name: 'Above',
     blurb: 'space and other planets',
     bed: 'air',
-    pano: { dir: 'down', haze: '#000' },
+    pano: { dir: 'down', haze: '#000', breathe: 0.05, overlap: 0.16, creep: 0.05, starfield: true },
     tracks: [
       {
         file: 'mars-wind', mode: 'loop',
-        art: { img: 'art/above/mars-wind.webp', credit: 'Image: Jezero Crater on sol 44, Perseverance · NASA/JPL-Caltech', focus: [0.45, 0.55], fx: [{ type: 'motes', color: '235,190,150', n: 70, fall: 2, drift: -22, alpha: 0.35 }] },
+        art: { img: 'art/above/mars-wind.webp', credit: 'Image: Jezero Crater on sol 44, Perseverance · NASA/JPL-Caltech', focus: [0.45, 0.55], fx: [{ type: 'mist', at: [0.52], color: '225,175,135', alpha: 0.1 }, { type: 'sheen', color: '255,215,170', alpha: 0.05, angle: 0.25, period: 55 }, { type: 'motes', color: '235,190,150', n: 70, fall: 2, drift: -22, alpha: 0.35 }] },
         title: 'Wind on Mars',
         place: 'Jezero Crater · 22 February 2021',
         about: 'This recording was made on Feb. 22, 2021, on the fourth sol (Martian day) by the SuperCam instrument on NASA’s Perseverance rover after deployment of the rover’s mast. Some wind can be heard, especially around 20 seconds into the recording.',
@@ -22,7 +22,7 @@ export const CHANNELS = [
       },
       {
         file: 'mars-dust-devil', mode: 'loop',
-        art: { img: 'art/above/mars-dust-devil.webp', credit: 'Image: a dust devil on the crater ridge, 30 July 2021 · NASA/JPL-Caltech', focus: [0.6, 0.12], fx: [{ type: 'motes', color: '235,190,150', n: 90, fall: -3, drift: -30, alpha: 0.35 }] },
+        art: { img: 'art/above/mars-dust-devil.webp', gapAfter: 0.7, credit: 'Image: a dust devil on the crater ridge, 30 July 2021 · NASA/JPL-Caltech', focus: [0.6, 0.12], fx: [{ type: 'mist', at: [0.45, 0.62], color: '225,180,140', alpha: 0.09 }, { type: 'motes', color: '235,190,150', n: 90, fall: -3, drift: -30, alpha: 0.35 }] },
         title: 'A dust devil on Mars',
         place: 'Jezero Crater · 27 September 2021',
         about: 'The dust devil passed directly over Perseverance on Sept. 27, 2021, the 215th Martian day, or sol, of the mission… the first time any such recording has been made. It was 82 feet (25 meters) wide, at least 387 feet (118 meters) tall, and moving at about 12 mph (19 kph).',
@@ -31,7 +31,7 @@ export const CHANNELS = [
       },
       {
         file: 'mars-impact', mode: 'events',
-        art: { img: 'art/above/mars-impact.webp', credit: 'Image: the new crater and its ice, HiRISE · NASA/JPL-Caltech/UArizona', fx: [{ type: 'glow', x: 0.5, y: 0.5, r: 0.3, color: '255,235,210', alpha: 0.04, react: 0.25 }] },
+        art: { img: 'art/above/mars-impact.webp', gapAfter: 1.44, gapLabel: 'Mars to Saturn · about 8 AU, 1.2 billion km', credit: 'Image: Mars from orbit, Viking 1980 · NASA/JPL-Caltech/USGS', fit: 'contain', zoom: 0.82, fx: [{ type: 'stars', region: [0, 0, 0.25, 1], n: 60, alpha: 0.7 }, { type: 'stars', region: [0.75, 0, 1, 1], n: 60, alpha: 0.7 }, { type: 'glow', x: 0.5, y: 0.5, r: 0.36, color: '255,150,100', alpha: 0.03, react: 0.2 }, { type: 'flash', onImage: true, region: [0.3, 0.3, 0.7, 0.7], color: '255,225,190', r: 0.025, rate: 0, life: 1.4, alpha: 0.7 }] },
         title: 'A meteoroid hits Mars',
         place: 'InSight lander · 24 December 2021',
         about: 'NASA\'s InSight Mars lander detected a giant meteoroid strike on Dec. 24, 2021. InSight\'s seismometer records seismic signals that are not in the range of human hearing. In order to make the signals audible, the data was sped up 100 times.',
@@ -40,7 +40,7 @@ export const CHANNELS = [
       },
       {
         file: 'saturn-lightning', mode: 'events',
-        art: { img: 'art/above/saturn-lightning.webp', credit: 'Image: the storm seen by Cassini, 2011 · NASA/JPL-Caltech/SSI', focus: [0.5, 0.32], fx: [{ type: 'glow', x: 0.6, y: 0.3, r: 0.12, color: '235,240,255', alpha: 0, react: 0.9, pulse: 3 }] },
+        art: { img: 'art/above/saturn-lightning.webp', credit: 'Image: the storm seen by Cassini, 2011 · NASA/JPL-Caltech/SSI', fit: 'contain', fx: [{ type: 'stars', region: [0, 0, 0.3, 1], n: 70, alpha: 0.6 }, { type: 'flash', onImage: true, region: [0.45, 0.2, 0.85, 0.3], color: '225,235,255', r: 0.035, rate: 6, life: 0.6, alpha: 0.75 }] },
         title: 'Lightning on Saturn',
         place: 'Cassini spacecraft · 15 March 2011',
         about: 'Lightning at Saturn creates phenomena known as Saturn electrostatic discharges, which are like the static that Earth lightning creates on an AM radio. At its most active, lightning flashes occurred at a rate of more than 10 per second.',
@@ -49,7 +49,7 @@ export const CHANNELS = [
       },
       {
         file: 'saturn-radio', mode: 'loop',
-        art: { img: 'art/above/saturn-radio.webp', credit: 'Image: Saturn backlit by the Sun, Cassini 2007 · NASA/JPL/SSI', fx: [{ type: 'stars', region: [0, 0, 1, 1], n: 90, alpha: 0.6 }] },
+        art: { img: 'art/above/saturn-radio.webp', gapAfter: 20.07, gapLabel: 'Saturn to Voyager 1 in interstellar space, 2012 · about 112 AU, 16.7 billion km', credit: 'Image: Saturn backlit by the Sun, Cassini 2007 · NASA/JPL/SSI', fx: [{ type: 'stars', region: [0, 0, 1, 0.22], n: 50, alpha: 0.6 }, { type: 'sheen', onImage: true, color: '255,235,200', alpha: 0.06, angle: -0.4, width: 0.22, period: 45 }] },
         title: 'Saturn\'s aurora, as radio',
         place: 'Cassini spacecraft · from 2002',
         about: 'The radio waves are closely related to the auroras near the poles of the planet. The complex radio spectrum with rising and falling tones, is very similar to Earth\'s auroral radio emissions.',
@@ -58,7 +58,7 @@ export const CHANNELS = [
       },
       {
         file: 'voyager-plasma', mode: 'loop',
-        art: { img: 'art/above/voyager-plasma.webp', credit: 'Image: the Pale Blue Dot, Earth from 6 billion km, Voyager 1, 1990 · NASA/JPL-Caltech', fx: [{ type: 'stars', region: [0, 0, 1, 1], n: 140, alpha: 0.7 }] },
+        art: { img: 'art/above/voyager-plasma.webp', gapAfter: 1, credit: 'Image: the Pale Blue Dot, Earth from 6 billion km, Voyager 1, 1990 · NASA/JPL-Caltech', fx: [{ type: 'stars', region: [0, 0, 1, 1], n: 120, alpha: 0.55 }, { type: 'motes', color: '200,215,255', n: 30, fall: -1.5, drift: 2, alpha: 0.18 }] },
         title: 'Interstellar space',
         place: 'Voyager 1 · 2012–2013',
         about: 'Voyager 1\'s plasma wave instrument detected the vibrations of dense interstellar plasma, or ionized gas, from October to November 2012 and April to May 2013. Scientists noticed that each occurrence involved a rising tone. This means a continuously increasing density.',

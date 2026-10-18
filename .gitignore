@@ -12,3 +12,4 @@ sounds/dawn-chorus.mp3
 sounds/thunder.mp3
 __pycache__/
 .DS_Store
+art/prompts.html

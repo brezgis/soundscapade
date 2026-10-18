@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Soundscapade: a sun rising over the horizon, drawn as sound spreading out -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16203a"/>
+      <stop offset="1" stop-color="#43466b"/>
+    </linearGradient>
+    <clipPath id="tile"><rect width="64" height="64" rx="14"/></clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect width="64" height="64" fill="url(#sky)"/>
+    <rect y="42" width="64" height="22" fill="#0f1a22"/>
+  </g>
+  <circle cx="32" cy="42" r="6" fill="#f3dcb2"/>
+  <g fill="none" stroke="#f3dcb2" stroke-linecap="round">
+    <path d="M20 42a12 12 0 0 1 24 0" stroke-width="4" opacity=".9"/>
+    <path d="M12 42a20 20 0 0 1 40 0" stroke-width="3.6" opacity=".6"/>
+  </g>
+  <path d="M7 42h50" stroke="#f3dcb2" stroke-width="3" stroke-linecap="round"/>
+</svg>
