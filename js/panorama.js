@@ -111,6 +111,17 @@ export function panorama(cfg) {
     grad.addColorStop(0, 'rgba(0,0,0,0)'); grad.addColorStop(0.1, 'rgba(0,0,0,1)');
     grad.addColorStop(0.9, 'rgba(0,0,0,1)'); grad.addColorStop(1, 'rgba(0,0,0,0)');
     mask(g, grad, pw, ph);
+    // a soft clearing so the foreground never hides the star of the picture
+    if (p.frontClear) {
+      const [cx, cy, rx, ry] = p.frontClear;
+      g.save();
+      g.globalCompositeOperation = 'destination-out';
+      g.translate(cx * pw, cy * ph); g.scale(1, ry / rx);
+      const hole = g.createRadialGradient(0, 0, 0, 0, 0, rx * pw);
+      hole.addColorStop(0, 'rgba(0,0,0,1)'); hole.addColorStop(0.55, 'rgba(0,0,0,0.9)'); hole.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = hole; g.fillRect(-rx * pw, -rx * pw, rx * pw * 2, rx * pw * 2);
+      g.restore();
+    }
     return c2;
   }
 

@@ -22,7 +22,7 @@ export const CHANNELS = [
       },
       {
         file: 'mars-wind', mode: 'loop',
-        art: { img: 'art/above/mars-wind.webp', front: 'art/above/mars-wind-front.webp', frontFilter: 'hue-rotate(14deg) saturate(0.62) brightness(0.92)', credit: 'Image: Jezero Crater on sol 44, Perseverance · NASA/JPL-Caltech', focus: [0.45, 0.55], fx: [{ type: 'mist', at: [0.52], color: '225,175,135', alpha: 0.1 }, { type: 'sheen', color: '255,215,170', alpha: 0.05, angle: 0.25, period: 55 }, { type: 'motes', color: '235,190,150', n: 70, fall: 2, drift: -22, alpha: 0.35 }] },
+        art: { img: 'art/above/mars-wind.webp', credit: 'Image: Jezero Crater on sol 44, Perseverance · NASA/JPL-Caltech', focus: [0.45, 0.55], fx: [{ type: 'mist', at: [0.52], color: '225,175,135', alpha: 0.1 }, { type: 'sheen', color: '255,215,170', alpha: 0.05, angle: 0.25, period: 55 }, { type: 'motes', color: '235,190,150', n: 70, fall: 2, drift: -22, alpha: 0.35 }] },
         title: 'Wind on Mars',
         place: 'Jezero Crater · 22 February 2021',
         about: 'This recording was made on Feb. 22, 2021, on the fourth sol (Martian day) by the SuperCam instrument on NASA’s Perseverance rover after deployment of the rover’s mast. Some wind can be heard, especially around 20 seconds into the recording.',
@@ -31,7 +31,7 @@ export const CHANNELS = [
       },
       {
         file: 'mars-dust-devil', mode: 'loop',
-        art: { img: 'art/above/mars-dust-devil.webp', front: 'art/above/mars-dust-devil-front.webp', frontFilter: 'hue-rotate(14deg) saturate(0.62) brightness(0.92)', gapAfter: 0.7, credit: 'Image: a dust devil on the crater ridge, 30 July 2021 · NASA/JPL-Caltech', focus: [0.6, 0.12], fx: [{ type: 'mist', at: [0.45, 0.62], color: '225,180,140', alpha: 0.09 }, { type: 'motes', color: '235,190,150', n: 90, fall: -3, drift: -30, alpha: 0.35 }] },
+        art: { img: 'art/above/mars-dust-devil.webp', gapAfter: 0.7, credit: 'Image: a dust devil on the crater ridge, 30 July 2021 · NASA/JPL-Caltech', focus: [0.6, 0.12], fx: [{ type: 'mist', at: [0.45, 0.62], color: '225,180,140', alpha: 0.09 }, { type: 'motes', color: '235,190,150', n: 90, fall: -3, drift: -30, alpha: 0.35 }] },
         title: 'A dust devil on Mars',
         place: 'Jezero Crater · 27 September 2021',
         about: 'The dust devil passed directly over Perseverance on Sept. 27, 2021, the 215th Martian day, or sol, of the mission… the first time any such recording has been made. It was 82 feet (25 meters) wide, at least 387 feet (118 meters) tall, and moving at about 12 mph (19 kph).',
