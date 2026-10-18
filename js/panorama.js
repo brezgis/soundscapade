@@ -106,7 +106,7 @@ export function panorama(cfg) {
     const c2 = document.createElement('canvas');
     c2.width = pw; c2.height = ph;
     const g = c2.getContext('2d');
-    drawCover(g, img, { focus: p.frontFocus || [0.5, 1] }, pw, ph);
+    drawCover(g, img, { focus: p.frontFocus || [0.5, 1], filter: p.frontFilter }, pw, ph);
     const grad = vertical ? g.createLinearGradient(0, 0, 0, ph) : g.createLinearGradient(0, 0, pw, 0);
     grad.addColorStop(0, 'rgba(0,0,0,0)'); grad.addColorStop(0.1, 'rgba(0,0,0,1)');
     grad.addColorStop(0.9, 'rgba(0,0,0,1)'); grad.addColorStop(1, 'rgba(0,0,0,0)');
@@ -146,7 +146,7 @@ export function panorama(cfg) {
       W = Math.round(w); H = Math.round(h);
       L = vertical ? H : W;
       X = vertical ? W : H;
-      Lp = Math.max(L, Math.round(X * (cfg.aspect || 0)));
+      Lp = Math.round(Math.max(L, X * (cfg.aspect || 0)) * (1 + (cfg.bleed || 0)));
       S = Lp * (1 - overlap);
       centre = (Lp - L) / 2;
       // on a panel longer than the screen, wander through most of its length
@@ -351,6 +351,180 @@ function overlay(o) {
 }
 
 const OVERLAYS = {
+  // ---- the signal itself, drawn into the picture ----
+
+  // a live spectrogram inside a region of the picture, blended like light: the
+  // sound's frequencies as a slowly falling waterfall (whistlers, the Wow! tone)
+  spectro(o) {
+    let buf, bg, row, mask, tmp, tg, sc, sg, avg = null, wpx = 0, hpx = 0;
+    const [x0, y0, x1, y1] = o.region || [0, 0, 1, 0.5];
+    const col = (o.color || '120,255,190').split(',').map(Number);
+    return {
+      draw(ctx, w, h, t, dt, a, wt, ox, oy) {
+        const rw = Math.max(2, Math.round((x1 - x0) * w)), rh = Math.max(2, Math.round((y1 - y0) * h));
+        if (rw !== wpx || rh !== hpx) {
+          wpx = rw; hpx = rh;
+          buf = document.createElement('canvas'); buf.width = rw; buf.height = rh; bg = buf.getContext('2d');
+          row = bg.createImageData(rw, 1);
+          tmp = document.createElement('canvas'); tmp.width = rw; tmp.height = rh; tg = tmp.getContext('2d');
+          sc = document.createElement('canvas'); sc.width = rw; sc.height = rh; sg = sc.getContext('2d');
+          // a soft-edged mask so the region reads as light in the scene, not a box
+          mask = document.createElement('canvas'); mask.width = rw; mask.height = rh;
+          const mg = mask.getContext('2d');
+          mg.fillStyle = '#fff'; mg.fillRect(0, 0, rw, rh);
+          mg.globalCompositeOperation = 'destination-in';
+          for (const [gx0, gy0, gx1, gy1] of [[0, 0, rw, 0], [0, 0, 0, rh]]) {
+            const g = mg.createLinearGradient(gx0, gy0, gx1, gy1);
+            g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(0.2, 'rgba(0,0,0,1)');
+            g.addColorStop(0.8, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+            mg.fillStyle = g; mg.fillRect(0, 0, rw, rh);
+          }
+        }
+        const f = a.freq;
+        if (f) {
+          // scroll down a line. Clear first: drawing a faint row over an old one would
+          // only ever add, until the whole waterfall filled up
+          sg.clearRect(0, 0, rw, rh); sg.drawImage(buf, 0, 0);
+          bg.clearRect(0, 0, rw, rh); bg.drawImage(sc, 0, 0, rw, rh - 1, 0, 1, rw, rh - 1);
+          const lo = o.lo ?? 4, hi = (o.hi ?? 0.45) * f.length, d = row.data;
+          if (!avg || avg.length !== rw) avg = new Float32Array(rw);
+          const cols = new Float32Array(rw);
+          let mean = 0;
+          for (let x = 0; x < rw; x++) { cols[x] = f[Math.floor(lo * Math.pow(hi / lo, x / rw))]; mean += cols[x]; }
+          mean /= rw;
+          for (let x = 0; x < rw; x++) {
+            // draw only what stands out from the rest of the spectrum right now AND from
+            // this frequency's own recent level: a whistler, the Wow! tone. A fade-in or
+            // a broad swell of hiss lifts everything together and so draws nothing.
+            avg[x] += (cols[x] - avg[x]) * (o.adapt ?? 0.03);
+            const base = Math.max(avg[x], mean) + (o.floor ?? 16);
+            const v = Math.min(1, Math.max(0, (cols[x] - base) / 50)) ** 1.3;
+            d[x * 4] = col[0]; d[x * 4 + 1] = col[1]; d[x * 4 + 2] = col[2]; d[x * 4 + 3] = v * 255;
+          }
+          bg.putImageData(row, 0, 0);
+        }
+        tg.globalCompositeOperation = 'copy'; tg.drawImage(buf, 0, 0);
+        tg.globalCompositeOperation = 'destination-in'; tg.drawImage(mask, 0, 0);
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.globalAlpha = (o.alpha ?? 0.5) * wt;
+        ctx.drawImage(tmp, ox + x0 * w, oy + y0 * h);
+        ctx.restore();
+      },
+    };
+  },
+
+  // a scrolling seismograph-style trace of the sound's loudness, like a drum recorder
+  trace(o) {
+    const hist = [];
+    let acc = 0;
+    const col = o.color || '255,205,140';
+    return {
+      draw(ctx, w, h, t, dt, a, wt, ox, oy) {
+        acc += dt;
+        const step = o.step ?? 1 / 40;
+        while (acc > step) {
+          acc -= step;
+          let peak = 0;
+          const wv = a.wave;
+          if (wv) for (let i = 0; i < wv.length; i += 8) peak = Math.max(peak, Math.abs(wv[i]));
+          hist.push(Math.min(1, peak * (o.gain ?? 2.5)) * (Math.random() < 0.5 ? -1 : 1));
+          if (hist.length > 1200) hist.shift();
+        }
+        const x0 = ox + (o.x0 ?? 0.05) * w, x1 = ox + (o.x1 ?? 0.95) * w, y = oy + (o.y ?? 0.8) * h, amp = (o.amp ?? 0.08) * h;
+        const px = o.px ?? 2.2, n = Math.min(hist.length, Math.floor((x1 - x0) / px));
+        ctx.save();
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.strokeStyle = `rgba(${col},${(o.alpha ?? 0.55) * wt})`;
+        ctx.lineWidth = 1.3;
+        ctx.shadowColor = `rgba(${col},0.8)`; ctx.shadowBlur = 6;
+        ctx.beginPath();
+        for (let k = 0; k < n; k++) {
+          const v = hist[hist.length - n + k], x = x1 - (n - k) * px;
+          k ? ctx.lineTo(x, y - v * amp) : ctx.moveTo(x, y - v * amp);
+        }
+        ctx.stroke();
+        // the baseline it's riding on, very faint
+        ctx.shadowBlur = 0;
+        ctx.strokeStyle = `rgba(${col},${0.12 * wt})`;
+        ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke();
+        ctx.restore();
+      },
+    };
+  },
+
+  // five-digit groups surfacing and fading, in time with the voice: the shape of
+  // a numbers-station message (random digits, not a transcription)
+  digits(o) {
+    let groups = [], cool = 0;
+    const [x0, y0, x1, y1] = o.region || [0.55, 0.15, 0.95, 0.6];
+    const col = o.color || '255,220,170';
+    return {
+      draw(ctx, w, h, t, dt, a, wt, ox, oy) {
+        cool -= dt;
+        if (cool <= 0 && (a.peak || a.level > (o.threshold ?? 0.12))) {
+          cool = o.every ?? 1.1;
+          const g = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10)).join('');
+          groups.push({ g, x: rnd(x0, x1), y: rnd(y0, y1), t0: t });
+        }
+        groups = groups.filter((q) => t - q.t0 < (o.life ?? 7));
+        ctx.save();
+        ctx.font = `300 ${Math.round(h * (o.size ?? 0.028))}px "IBM Plex Mono", ui-monospace, monospace`;
+        ctx.textAlign = 'center';
+        for (const q of groups) {
+          const k = (t - q.t0) / (o.life ?? 7);
+          const al = Math.min(1, k * 8) * (1 - k) ** 1.5 * (o.alpha ?? 0.45) * wt;
+          ctx.fillStyle = `rgba(${col},${al})`;
+          ctx.shadowColor = `rgba(${col},${al})`; ctx.shadowBlur = 10;
+          ctx.fillText(q.g.split('').join(' '), ox + q.x * w, oy + q.y * h - k * h * 0.02);
+        }
+        ctx.restore();
+      },
+    };
+  },
+
+  // the Big Ear printout: "6EQUJ5" set down one character per 12 seconds, as the
+  // intensities were, while the sonified tone rises and falls
+  printout(o) {
+    const seq = '6EQUJ5'.split('');
+    let since = null;
+    return {
+      draw(ctx, w, h, t, dt, a, wt, ox, oy) {
+        if (wt > 0.9 && since === null) since = t;
+        if (wt < 0.1) since = null;
+        if (since === null) return;
+        const el = t - since - (o.lead ?? 8);       // the sonification's noise lead-in
+        const x = ox + (o.x ?? 0.82) * w, y0 = oy + (o.y ?? 0.2) * h, lh = h * 0.06;
+        ctx.save();
+        ctx.font = `400 ${Math.round(lh * 0.8)}px "IBM Plex Mono", ui-monospace, monospace`;
+        ctx.textAlign = 'center';
+        // the blank rows either side, as on the paper
+        for (let i = -2; i < 8; i++) {
+          const ch = i >= 0 && i < 6 ? seq[i] : '1';
+          const shown = i < 0 || el > i * 12 || i >= 6 && el > 72;
+          if (!shown) continue;
+          const isSig = i >= 0 && i < 6;
+          const cur = isSig && el > i * 12 && el < (i + 1) * 12;
+          const al = (isSig ? (cur ? 0.95 : 0.6) : 0.18) * wt;
+          ctx.fillStyle = isSig ? `rgba(255,236,200,${al})` : `rgba(220,225,235,${al})`;
+          if (cur) { ctx.shadowColor = 'rgba(255,220,160,0.9)'; ctx.shadowBlur = 14; } else ctx.shadowBlur = 0;
+          ctx.fillText(ch, x, y0 + (i + 2) * lh);
+        }
+        // Ehman's circle and "Wow!" once the six are down
+        if (el > 72) {
+          const k = Math.min(1, (el - 72) / 2);
+          ctx.shadowBlur = 0;
+          ctx.strokeStyle = `rgba(230,90,80,${0.7 * k * wt})`; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.ellipse(x, y0 + 4.5 * lh, lh * 0.75, lh * 3.4, 0, 0, TAU * k); ctx.stroke();
+          ctx.fillStyle = `rgba(230,90,80,${0.8 * k * wt})`;
+          ctx.font = `italic 400 ${Math.round(lh * 0.7)}px "Alegreya Sans", system-ui, sans-serif`;
+          ctx.fillText('Wow!', x - lh * 1.9, y0 + 2.6 * lh);
+        }
+        ctx.restore();
+      },
+    };
+  },
+
   // brief bursts of light inside a region, fired by the sound: lightning in a
   // storm, a meteoroid strike. Busier sound, more flashes.
   flash(o) {

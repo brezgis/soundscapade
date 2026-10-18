@@ -8,12 +8,12 @@ It opens straight onto a random channel and a random sound. Click anywhere for s
 
 | | | |
 |---|---|---|
-| **Above** | Mars wind, a dust devil and a meteoroid impact; Saturn's auroral radio and lightning; Voyager 1 in interstellar plasma | real NASA images, rising from the Martian surface to the Pale Blue Dot |
-| **Below** | a reef, a humpback, bearded seals, a singing iceberg, an iceberg breaking up, the Bloop | layered underwater panorama, descending |
+| **Above** | Earth's chorus from the Van Allen Probes ("Earthsong"); Mars wind, a dust devil and a meteoroid impact; Juno passing Ganymede; Saturn's auroral radio and lightning; Voyager 1 in interstellar plasma; the Perseus black hole | real NASA images, climbing with the gaps between worlds to scale |
+| **Below** | a reef, orcas, a humpback, bearded seals, a blue whale, a singing iceberg, an iceberg breaking up, the Upsweep, the Bloop | layered underwater panorama, descending |
 | **Wild** | gibbons, howler monkeys, a bellbird, a lyrebird, spadefoot toads, loons, a nightingale, higurashi | layered panorama, dawn to dusk |
-| **Cities** | cafés in Istanbul and Greenland, Venice at dawn, Cairo's market, Hong Kong harbour, the Moscow metro, Marrakech, the Seoul subway | night skyline (panorama in progress) |
+| **Cities** | Venice at dawn, cafés in Istanbul and Greenland, Cairo's market, Marrakech, Hong Kong harbour, the Seoul subway, the Moscow metro | real photographs and generated scenes, joined by dark "tunnels" |
 | **Voices** | the 1860 phonautograph, Brahms, Tennyson, Florence Nightingale, the Voyager greetings, Tuvan overtone singing, whistled Yoruba | archival photographs along a timeline |
-| **Signals** | the Wow! signal, aurora natural radio, the Tōhoku earthquake, the Buzzer, the Gong, Cherry Ripe, the German lady | a radio waterfall drawn from the audio itself |
+| **Signals** | the Wow! signal, aurora natural radio, the Tōhoku earthquake, the Buzzer, the Gong, Cherry Ripe, the German lady | listening posts, with the signal itself drawn in: a live spectrogram, a seismograph trace, the 6EQUJ5 printout, numbers surfacing |
 | **Now** | live Locus Sonus open microphones in Kyoto, Amsterdam, Bristol, Brussels, the Alps and Jeju | a globe that turns to the microphone |
 
 Every caption is quoted from a real source (NASA, NOAA, the National Park Service, the BBC catalogue, the recordists' notes, Wikipedia) and says whose words and whose recording it is.
@@ -43,14 +43,17 @@ The Wow! signal has no recording — Big Ear only printed numbers — so it's so
 
 The **code** is MIT (see `LICENSE`). The sounds, images and quoted texts belong to their creators:
 
-- **NASA / JPL-Caltech / University of Iowa** — Mars, Saturn, Voyager sounds and images; Voyager Golden Record. Public domain.
-- **NOAA PMEL Acoustics Program** — icebergs, the Bloop, damselfish. U.S. government work.
-- **National Park Service** — humpback, spadefoot toads; NPS & MSU Acoustic Atlas — loons. Public domain.
+- **NASA / JPL-Caltech / University of Iowa** — Mars, Saturn, Jupiter (Juno), Voyager and Van Allen Probes sounds and images; Voyager Golden Record. Public domain.
+- **NASA Chandra X-ray Center** — Perseus cluster sonification (NASA/CXC/SAO; K. Arcand, SYSTEM Sounds) and image (NASA/CXC/GSFC).
+- **Kalleheikki Kannisto** — enhanced Juno image of Ganymede, CC BY.
+- **NOAA PMEL Acoustics Program** — icebergs, the Bloop, the Upsweep, a blue whale, damselfish. U.S. government work.
+- **National Park Service** — humpback, orcas, spadefoot toads; NPS & MSU Acoustic Atlas — loons. Public domain.
 - **Wikimedia Commons** contributors — gibbons, howler monkeys, bellbird, lyrebird, nightingale, higurashi, bearded seals (Max Eastley), Marrakech, Seoul subway, the historical voices, Yoruba whistling, Tuvan singing, the numbers stations, archival photographs. Public domain, CC0, CC BY or CC BY-SA as credited in each caption.
 - **BBC Sound Effects archive** — the Istanbul, Greenland, Venice, Cairo, Hong Kong and Moscow recordings, under the RemArc licence: **personal, educational and research use only**.
 - **Stephen P. McGreevy**, via the University of Iowa — VLF natural radio. Licence not stated.
 - **Locus Sonus** — live open-microphone streams.
 - Caption texts quote the sources named in each caption, including Wikipedia (CC BY-SA) and Priyom.org (CC BY-NC-SA).
-- Panorama scenes for Below, Wild and Cities are AI-generated illustrations.
+- **Photographs** in Cities and Signals (Venice, Moscow, the Churchill aurora, the Matsushiro tunnel) and the Tuva steppe in Voices come from Wikimedia Commons contributors under CC BY / CC BY-SA, credited in each caption.
+- Other panorama scenes and the foreground layers are AI-generated illustrations.
 
 If you're a rights-holder and would like a credit corrected or something removed, please open an issue.

@@ -12,10 +12,13 @@ CHANNELS = {
         "front": "a few out-of-focus underwater elements very close to the camera: drifting strands of kelp or seagrass entering from the left and right edges, a small cluster of rising air bubbles, a few large blurry particles of marine snow",
         "panels": [
             ("damselfish", "A shallow, sunlit coral reef in American Samoa seen underwater: healthy branching and plate corals, small blue-green damselfish hovering over their patches, sun rays rippling down from the bright surface."),
+            ("orcas", "Underwater in a cold Alaskan fjord just below the surface: a small pod of orcas (killer whales) gliding past, crisp black and white markings, green-blue water, rippling light from the surface above."),
             ("humpback", "Open water in a cold Alaskan fjord, a humpback whale gliding past in the middle distance, long pectoral fins, faint green-blue light from above, suspended particles."),
             ("bearded-seals", "Under Arctic sea ice near Svalbard: the underside of the ice glowing pale turquoise above, a bearded seal with long whiskers hanging vertically in the water below the ice, dim cold light."),
+            ("blue-whale", "Vast open ocean far from land, deep blue water: an enormous blue whale, mottled blue-grey and impossibly long, gliding through the middle distance, faint light rays from far above, tiny drifting particles."),
             ("iceberg-tremor", "Deep underwater in the Southern Ocean, the enormous dark keel of an iceberg resting against the rocky seafloor, faint blue light filtering down its sheer ice walls."),
             ("iceberg-calving", "Deep blue Southern Ocean water beneath a disintegrating iceberg: fractured slabs and chunks of ice sinking through the water column, clouds of fine ice and bubbles, dark depths below."),
+            ("upsweep", "The deep seafloor of the South Pacific beside an underwater volcanic ridge: dark basalt pillow lava, a faint orange glow from a distant volcanic vent, shimmering water, drifting particles, near-black blue water above."),
             ("bloop", "The deep ocean abyss near Antarctica: almost total darkness, a faint ghostly blue glow far above, a few drifting particles, an immense sense of empty space."),
         ],
     },

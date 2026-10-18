@@ -55,6 +55,7 @@ function frame(now) {
     audio.peak = cooldown <= 0 && s.level > 0.12 && s.level > slow * 1.8;
     if (audio.peak) cooldown = 1.2;
     audio.freq = engine.freqData;
+    audio.wave = engine.timeData;
   }
 
   const k = previous ? Math.min(1, (now / 1000 - fadeStart) / FADE) : 1;

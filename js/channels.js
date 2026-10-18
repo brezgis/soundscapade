@@ -12,8 +12,17 @@ export const CHANNELS = [
     pano: { dir: 'down', haze: '#000', breathe: 0.05, overlap: 0.16, creep: 0.05, starfield: true },
     tracks: [
       {
+        file: 'earthsong', mode: 'loop',
+        art: { img: 'art/above/earthsong.webp', credit: 'Image: an aurora seen from the International Space Station, 2012 · NASA', gapAfter: 0.4, fx: [{ type: 'stars', region: [0, 0, 1, 0.45], n: 80, alpha: 0.6 }, { type: 'glow', x: 0.5, y: 0.72, r: 0.45, color: '120,255,170', alpha: 0.04, react: 0.35, pulse: 0.3 }] },
+        title: 'Earthsong',
+        place: 'Van Allen Probes, in Earth\'s radiation belts · 5 September 2012',
+        about: 'These were some of the first signals received from our instruments on the newly-launched spacecraft, and were widely publicized as "Earthsong". Chorus waves in Earth\'s magnetosphere are generated in the Van Allen radiation belts by electrons spiraling along Earth\'s magnetic field lines.',
+        source: 'University of Iowa, Van Allen Probes EMFISIS Waves',
+        credit: 'NASA / University of Iowa',
+      },
+      {
         file: 'mars-wind', mode: 'loop',
-        art: { img: 'art/above/mars-wind.webp', credit: 'Image: Jezero Crater on sol 44, Perseverance · NASA/JPL-Caltech', focus: [0.45, 0.55], fx: [{ type: 'mist', at: [0.52], color: '225,175,135', alpha: 0.1 }, { type: 'sheen', color: '255,215,170', alpha: 0.05, angle: 0.25, period: 55 }, { type: 'motes', color: '235,190,150', n: 70, fall: 2, drift: -22, alpha: 0.35 }] },
+        art: { img: 'art/above/mars-wind.webp', front: 'art/above/mars-wind-front.webp', frontFilter: 'hue-rotate(14deg) saturate(0.62) brightness(0.92)', credit: 'Image: Jezero Crater on sol 44, Perseverance · NASA/JPL-Caltech', focus: [0.45, 0.55], fx: [{ type: 'mist', at: [0.52], color: '225,175,135', alpha: 0.1 }, { type: 'sheen', color: '255,215,170', alpha: 0.05, angle: 0.25, period: 55 }, { type: 'motes', color: '235,190,150', n: 70, fall: 2, drift: -22, alpha: 0.35 }] },
         title: 'Wind on Mars',
         place: 'Jezero Crater · 22 February 2021',
         about: 'This recording was made on Feb. 22, 2021, on the fourth sol (Martian day) by the SuperCam instrument on NASA’s Perseverance rover after deployment of the rover’s mast. Some wind can be heard, especially around 20 seconds into the recording.',
@@ -22,7 +31,7 @@ export const CHANNELS = [
       },
       {
         file: 'mars-dust-devil', mode: 'loop',
-        art: { img: 'art/above/mars-dust-devil.webp', gapAfter: 0.7, credit: 'Image: a dust devil on the crater ridge, 30 July 2021 · NASA/JPL-Caltech', focus: [0.6, 0.12], fx: [{ type: 'mist', at: [0.45, 0.62], color: '225,180,140', alpha: 0.09 }, { type: 'motes', color: '235,190,150', n: 90, fall: -3, drift: -30, alpha: 0.35 }] },
+        art: { img: 'art/above/mars-dust-devil.webp', front: 'art/above/mars-dust-devil-front.webp', frontFilter: 'hue-rotate(14deg) saturate(0.62) brightness(0.92)', gapAfter: 0.7, credit: 'Image: a dust devil on the crater ridge, 30 July 2021 · NASA/JPL-Caltech', focus: [0.6, 0.12], fx: [{ type: 'mist', at: [0.45, 0.62], color: '225,180,140', alpha: 0.09 }, { type: 'motes', color: '235,190,150', n: 90, fall: -3, drift: -30, alpha: 0.35 }] },
         title: 'A dust devil on Mars',
         place: 'Jezero Crater · 27 September 2021',
         about: 'The dust devil passed directly over Perseverance on Sept. 27, 2021, the 215th Martian day, or sol, of the mission… the first time any such recording has been made. It was 82 feet (25 meters) wide, at least 387 feet (118 meters) tall, and moving at about 12 mph (19 kph).',
@@ -31,12 +40,21 @@ export const CHANNELS = [
       },
       {
         file: 'mars-impact', mode: 'events',
-        art: { img: 'art/above/mars-impact.webp', gapAfter: 1.44, gapLabel: 'Mars to Saturn · about 8 AU, 1.2 billion km', credit: 'Image: Mars from orbit, Viking 1980 · NASA/JPL-Caltech/USGS', fit: 'contain', zoom: 0.82, fx: [{ type: 'stars', region: [0, 0, 0.25, 1], n: 60, alpha: 0.7 }, { type: 'stars', region: [0.75, 0, 1, 1], n: 60, alpha: 0.7 }, { type: 'glow', x: 0.5, y: 0.5, r: 0.36, color: '255,150,100', alpha: 0.03, react: 0.2 }, { type: 'flash', onImage: true, region: [0.3, 0.3, 0.7, 0.7], color: '255,225,190', r: 0.025, rate: 0, life: 1.4, alpha: 0.7 }] },
+        art: { img: 'art/above/mars-impact.webp', gapAfter: 0.66, gapLabel: 'Mars to Jupiter · about 3.7 AU, 550 million km', credit: 'Image: Mars from orbit, Viking 1980 · NASA/JPL-Caltech/USGS', fit: 'contain', zoom: 0.82, fx: [{ type: 'stars', region: [0, 0, 0.25, 1], n: 60, alpha: 0.7 }, { type: 'stars', region: [0.75, 0, 1, 1], n: 60, alpha: 0.7 }, { type: 'glow', x: 0.5, y: 0.5, r: 0.36, color: '255,150,100', alpha: 0.03, react: 0.2 }, { type: 'flash', onImage: true, region: [0.3, 0.3, 0.7, 0.7], color: '255,225,190', r: 0.025, rate: 0, life: 1.4, alpha: 0.7 }] },
         title: 'A meteoroid hits Mars',
         place: 'InSight lander · 24 December 2021',
         about: 'NASA\'s InSight Mars lander detected a giant meteoroid strike on Dec. 24, 2021. InSight\'s seismometer records seismic signals that are not in the range of human hearing. In order to make the signals audible, the data was sped up 100 times.',
         source: 'NASA/JPL-Caltech',
         credit: 'NASA / JPL-Caltech / CNES / IPGP',
+      },
+      {
+        file: 'juno-ganymede', mode: 'loop',
+        art: { img: 'art/above/juno-ganymede.webp', credit: 'Image: Ganymede from Juno, enhanced by Kalleheikki Kannisto · NASA/JPL-Caltech/SwRI/MSSS, CC BY', fit: 'contain', zoom: 0.84, gapAfter: 0.78, gapLabel: 'Jupiter to Saturn · about 4.3 AU, 650 million km', fx: [{ type: 'stars', region: [0, 0, 0.26, 1], n: 50, alpha: 0.6 }, { type: 'stars', region: [0.74, 0, 1, 1], n: 50, alpha: 0.6 }, { type: 'sheen', onImage: true, color: '255,245,225', alpha: 0.05, angle: -0.3, width: 0.25, period: 40 }] },
+        title: 'Juno passes Ganymede',
+        place: 'Juno spacecraft · 7 June 2021',
+        about: 'Data collected by Juno\'s Waves instrument as the spacecraft flew past the Jovian moon Ganymede on June 7, 2021. The abrupt change to higher frequencies around the midpoint of the recording represents the spacecraft\'s move from one region of Ganymede\'s magnetosphere to another. The emissions, from 10 to 50 kHz, are shifted into the lower audio range.',
+        source: 'NASA/JPL-Caltech',
+        credit: 'NASA / JPL-Caltech / SwRI / University of Iowa',
       },
       {
         file: 'saturn-lightning', mode: 'events',
@@ -58,12 +76,21 @@ export const CHANNELS = [
       },
       {
         file: 'voyager-plasma', mode: 'loop',
-        art: { img: 'art/above/voyager-plasma.webp', gapAfter: 1, credit: 'Image: the Pale Blue Dot, Earth from 6 billion km, Voyager 1, 1990 · NASA/JPL-Caltech', fx: [{ type: 'stars', region: [0, 0, 1, 1], n: 120, alpha: 0.55 }, { type: 'motes', color: '200,215,255', n: 30, fall: -1.5, drift: 2, alpha: 0.18 }] },
+        art: { img: 'art/above/voyager-plasma.webp', gapAfter: 3, gapLabel: 'Voyager 1 to the Perseus cluster · 240 million light-years (not to scale)', credit: 'Image: the Pale Blue Dot, Earth from 6 billion km, Voyager 1, 1990 · NASA/JPL-Caltech', fx: [{ type: 'stars', region: [0, 0, 1, 1], n: 120, alpha: 0.55 }, { type: 'motes', color: '200,215,255', n: 30, fall: -1.5, drift: 2, alpha: 0.18 }] },
         title: 'Interstellar space',
         place: 'Voyager 1 · 2012–2013',
         about: 'Voyager 1\'s plasma wave instrument detected the vibrations of dense interstellar plasma, or ionized gas, from October to November 2012 and April to May 2013. Scientists noticed that each occurrence involved a rising tone. This means a continuously increasing density.',
         source: 'NASA/JPL-Caltech',
         credit: 'NASA / JPL-Caltech / University of Iowa',
+      },
+      {
+        file: 'perseus-black-hole', mode: 'loop',
+        art: { img: 'art/above/perseus-black-hole.webp', credit: 'Image: a vast wave in the Perseus cluster\'s hot gas · NASA/CXC/GSFC', fit: 'contain', zoom: 0.9, gapAfter: 1, fx: [{ type: 'glow', onImage: true, x: 0.5, y: 0.5, r: 0.35, color: '255,170,90', alpha: 0.05, react: 0.5, pulse: 0.25 }, { type: 'stars', region: [0, 0, 1, 1], n: 90, alpha: 0.45 }] },
+        title: 'A black hole\'s sound waves',
+        place: 'Perseus galaxy cluster · 240 million light-years away',
+        about: 'Pressure waves sent out by the black hole caused ripples in the cluster\'s hot gas that could be translated into a note — one that humans cannot hear some 57 octaves below middle C. The sound waves were extracted and resynthesized into the range of human hearing by scaling them upward by 57 and 58 octaves above their true pitch.',
+        source: 'NASA Chandra X-ray Center',
+        credit: 'NASA/CXC/SAO; K. Arcand, SYSTEM Sounds (M. Russo, A. Santaguida)',
       },
     ],
   },
@@ -84,6 +111,15 @@ export const CHANNELS = [
         credit: 'NOAA PMEL Acoustics Program',
       },
       {
+        file: 'orcas', mode: 'events',
+        art: { img: 'art/below/orcas-back.webp', front: 'art/below/orcas-front.webp', fx: [{ type: 'rays', alpha: 0.045 }, { type: 'shimmer', y: 0.03 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
+        title: 'Orcas',
+        place: 'Glacier Bay, Alaska',
+        about: 'Sound recording of killer whales, Glacier Bay National Park and Preserve, Alaska. The high-pitched whistles and buzzing sounds of a killer whale\'s vocalization.',
+        source: 'National Park Service',
+        credit: 'National Park Service',
+      },
+      {
         file: 'humpback', mode: 'events',
         art: { img: 'art/below/humpback-back.webp', front: 'art/below/humpback-front.webp', fx: [{ type: 'rays', alpha: 0.035 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
         title: 'Humpback whale',
@@ -100,6 +136,15 @@ export const CHANNELS = [
         about: 'Recording made of bearded seals by Max Eastley from a ship in Svalbard, using a hydrophone. The sounds of the bearded seal usually consist of a long oscillating trill lasting for a minute or more followed by a short, deep moan.',
         source: 'Wikimedia Commons; Wikipedia, “Bearded seal”',
         credit: 'Max Eastley, Cape Farewell project',
+      },
+      {
+        file: 'blue-whale', mode: 'events',
+        art: { img: 'art/below/blue-whale-back.webp', front: 'art/below/blue-whale-front.webp', fx: [{ type: 'rays', alpha: 0.03, len: 0.7 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
+        title: 'Blue whale',
+        place: 'NOAA hydrophone',
+        about: 'Blue whales produce some of the loudest and lowest frequency vocalizations in the animal kingdom, and their inner ears appear well adapted for detecting low-frequency sounds. The fundamental frequency for blue whale vocalizations ranges from 8 to 25 Hz.',
+        source: 'Wikipedia, “Blue whale”',
+        credit: 'NOAA PMEL Acoustics Program',
       },
       {
         file: 'iceberg-tremor', mode: 'loop',
@@ -120,6 +165,15 @@ export const CHANNELS = [
         credit: 'NOAA PMEL Acoustics Program',
       },
       {
+        file: 'upsweep', mode: 'loop',
+        art: { img: 'art/below/upsweep-back.webp', front: 'art/below/upsweep-front.webp', fx: [{ type: 'glow', x: 0.7, y: 0.7, r: 0.3, color: '255,140,70', alpha: 0.05, react: 0.4, pulse: 0.6 }, { type: 'motes', color: '200,225,255', n: 50, fall: -2, drift: 0, alpha: 0.25 }] },
+        title: 'Upsweep',
+        place: 'South Pacific, near 54°S 140°W · heard since 1991',
+        about: 'A long train of narrow-band upsweeping sounds of several seconds duration each. The source level is high enough to be recorded throughout the Pacific. The source can be roughly located at 54°S, 140°W, near the location of inferred volcanic seismicity, but the origin of the sound is unresolved. Sped up 20 times.',
+        source: 'NOAA PMEL Acoustics Program',
+        credit: 'NOAA PMEL Acoustics Program',
+      },
+      {
         file: 'bloop', mode: 'events',
         art: { img: 'art/below/bloop-back.webp', front: 'art/below/bloop-front.webp', fx: [{ type: 'motes', color: '200,225,255', n: 40, fall: -2, drift: 0, alpha: 0.25 }, { type: 'glow', x: 0.5, y: 0.12, r: 0.55, color: '120,180,255', alpha: 0.03, react: 0.5 }] },
         title: 'The Bloop',
@@ -135,7 +189,7 @@ export const CHANNELS = [
     name: 'Wild',
     blurb: 'forests and creatures',
     bed: 'wind',
-    pano: { dir: 'right', haze: '#3a3a30', aspect: 1.5, overlap: 0.38 },
+    pano: { dir: 'right', haze: '#3a3a30', aspect: 1.5, overlap: 0.14, bleed: 0.22 },
     tracks: [
       {
         file: 'gibbons', mode: 'events',
@@ -216,11 +270,11 @@ export const CHANNELS = [
     name: 'Cities',
     blurb: 'streets, cafés, stations',
     bed: null,
-    pano: { dir: 'left', haze: '#07080c', overlap: 0.12, creep: 0.05, gap: 0.3, breathe: 0.035 },
+    pano: { dir: 'left', haze: '#07080c', overlap: 0.1, creep: 0.04, gap: 0.3, bleed: 0.18, breathe: 0.035 },
     tracks: [
       {
         file: 'venice-dawn', mode: 'loop',
-        art: { img: 'art/cities/venice-dawn-photo.webp', credit: 'Photo: Piazza San Marco at dawn, Benh LIEU SONG from Torcy, France, CC BY-SA 2.0', fx: [{ type: 'mist', at: [0.78], color: '235,228,240', alpha: 0.09, height: 0.08 }, { type: 'sheen', color: '255,226,200', alpha: 0.05, angle: 0.3, period: 60 }] },
+        art: { img: 'art/cities/venice-dawn-photo.webp', front: 'art/cities/venice-dawn-front.webp', credit: 'Photo: Piazza San Marco at dawn, Benh LIEU SONG from Torcy, France, CC BY-SA 2.0', fx: [{ type: 'mist', at: [0.78], color: '235,228,240', alpha: 0.09, height: 0.08 }, { type: 'sheen', color: '255,226,200', alpha: 0.05, angle: 0.3, period: 60 }] },
         title: 'St Mark\'s Square at dawn',
         place: 'Venice, Italy',
         about: 'St. Mark\'s Square, Venice: Quiet, early morning, occasional distant voices, footsteps and pigeons, no traffic.',
@@ -247,7 +301,7 @@ export const CHANNELS = [
       },
       {
         file: 'marrakech-adhan', mode: 'events',
-        art: { img: 'art/cities/marrakech-adhan-back.webp', fx: [{ type: 'sheen', color: '255,210,160', alpha: 0.05, angle: 0.25, period: 50 }, { type: 'motes', color: '255,215,170', n: 35, fall: 0.5, drift: 4, alpha: 0.22 }] },
+        art: { img: 'art/cities/marrakech-adhan-back.webp', front: 'art/cities/marrakech-adhan-front.webp', fx: [{ type: 'sheen', color: '255,210,160', alpha: 0.05, angle: 0.25, period: 50 }, { type: 'motes', color: '255,215,170', n: 35, fall: 0.5, drift: 4, alpha: 0.22 }] },
         title: 'Call to prayer',
         place: 'Koutoubia Mosque, Marrakech · 2006',
         about: 'Call to prayer from the Koutoubia Mosque in Marrakech, Morocco. The Kutubiyya Mosque or Koutoubia Mosque is the largest mosque in Marrakesh, located in the southwest medina quarter, near the Jemaa el-Fnaa market place.',
@@ -256,7 +310,7 @@ export const CHANNELS = [
       },
       {
         file: 'hongkong-harbour', mode: 'loop',
-        art: { img: 'art/cities/hongkong-harbour-photo.webp', credit: 'Photo: Victoria Harbour at dusk from the Peak, Romain Pontida, CC BY-SA 2.0', focus: [0.5, 0.6], fx: [{ type: 'stars', region: [0, 0.38, 1, 1], n: 260, alpha: 0.55 }, { type: 'mist', at: [0.42], color: '170,190,230', alpha: 0.06 }] },
+        art: { img: 'art/cities/hongkong-harbour-back.webp', front: 'art/cities/hongkong-harbour-front.webp', fx: [{ type: 'stars', region: [0, 0.3, 1, 0.62], n: 160, alpha: 0.5 }, { type: 'shimmer', y: 0.72, n: 5, alpha: 0.06 }] },
         title: 'The harbour at evening',
         place: 'Hong Kong',
         about: 'Hong Kong: Harbour skyline, evening.',
@@ -265,7 +319,7 @@ export const CHANNELS = [
       },
       {
         file: 'seoul-subway', mode: 'loop',
-        art: { img: 'art/cities/seoul-subway-photo.webp', credit: 'Photo: a Seoul Metro Line 3 carriage, mailer_diablo, CC BY-SA 3.0', fx: [{ type: 'sheen', color: '255,255,255', alpha: 0.05, angle: 0, width: 0.12, period: 14 }] },
+        art: { img: 'art/cities/seoul-subway-back.webp', front: 'art/cities/seoul-subway-front.webp', fx: [{ type: 'sheen', color: '255,250,235', alpha: 0.06, angle: 0, width: 0.08, period: 7 }] },
         title: 'Seoul subway, Line 3',
         place: 'Jongno 3-ga to Express Bus Terminal, Seoul · 2013',
         about: 'Seoul subway line 3, Jongro-samga station to Express bus terminal station, Seoul Metro series 3000. In 2021, the Seoul Metro operated section had an annual ridership of 237,469,000 or 650,600 passengers per day.',
@@ -274,7 +328,7 @@ export const CHANNELS = [
       },
       {
         file: 'moscow-metro', mode: 'loop',
-        art: { img: 'art/cities/moscow-metro-photo.webp', credit: 'Photo: Mayakovskaya station, Sergey A. Demidov, CC BY 4.0', fx: [{ type: 'glow', x: 0.5, y: 0.18, r: 0.35, color: '255,235,200', alpha: 0.05, react: 0.25 }, { type: 'motes', color: '255,240,215', n: 30, fall: 1, drift: 0, alpha: 0.18 }] },
+        art: { img: 'art/cities/moscow-metro-photo.webp', front: 'art/cities/moscow-metro-front.webp', credit: 'Photo: Mayakovskaya station, Sergey A. Demidov, CC BY 4.0', fx: [{ type: 'glow', x: 0.5, y: 0.18, r: 0.35, color: '255,235,200', alpha: 0.05, react: 0.25 }, { type: 'motes', color: '255,240,215', n: 30, fall: 1, drift: 0, alpha: 0.18 }] },
         title: 'Mayakovskaya station',
         place: 'Moscow metro',
         about: 'Mayakovskovo Metro Station, platform, continuous noise of trains arriving and departing, also footsteps and air conditioning noise.',
@@ -283,7 +337,7 @@ export const CHANNELS = [
       },
       {
         file: 'cafe-ammassalik', mode: 'loop',
-        art: { img: 'art/cities/cafe-ammassalik-photo.webp', credit: 'Photo: Tasiilaq, East Greenland, Filip Gielda, CC0', fx: [{ type: 'mist', at: [0.35], color: '235,240,248', alpha: 0.08 }, { type: 'sheen', color: '255,250,240', alpha: 0.04, angle: 0.2, period: 70 }] },
+        art: { img: 'art/cities/cafe-ammassalik-back.webp', front: 'art/cities/cafe-ammassalik-front.webp', fx: [{ type: 'glow', x: 0.1, y: 0.62, r: 0.18, color: '255,160,80', alpha: 0.08, react: 0.2, pulse: 2.3 }, { type: 'snow', n: 60, alpha: 0.3, fall: 10 }] },
         title: 'A café in Greenland',
         place: 'Ammassalik (Tasiilaq), East Greenland',
         about: 'Cafe, Ammassalik. Tasiilaq, formerly Ammassalik, is a town on Ammassalik Island in southeastern Greenland. With 1,985 inhabitants as of 2020, it is the most populous community on the eastern coast.',
@@ -297,7 +351,7 @@ export const CHANNELS = [
     name: 'Voices',
     blurb: 'people across time and language',
     bed: null,
-    pano: { dir: 'left', haze: '#1c1610', paper: '#1c1610' },
+    pano: { dir: 'left', haze: '#1c1610', paper: '#1c1610', overlap: 0.05 },
     tracks: [
       {
         file: 'phonautograph-1860', mode: 'events',
@@ -346,7 +400,7 @@ export const CHANNELS = [
       },
       {
         file: 'tuvan-sygyt', mode: 'events',
-        art: { img: 'art/voices/tuvan-sygyt.webp', credit: 'Photo: Tuva, stepa, CC BY 2.0', fit: 'print', year: '2019', fx: [{ type: 'glow', x: 0.58, y: 0.42, r: 0.4, color: '255,214,160', alpha: 0.06, react: 0.22, pulse: 0.5 }, { type: 'motes', color: '255,233,184', n: 45, fall: -2, drift: 1, alpha: 0.3 }] },
+        art: { img: 'art/voices/tuvan-sygyt.webp', credit: 'Photo: steppe below Mount Begredaa, Tuva, Zamunu45, CC BY-SA 4.0', fit: 'print', year: '2019', fx: [{ type: 'glow', x: 0.58, y: 0.42, r: 0.4, color: '255,214,160', alpha: 0.06, react: 0.22, pulse: 0.5 }, { type: 'motes', color: '255,233,184', n: 45, fall: -2, drift: 1, alpha: 0.3 }] },
         title: 'Tuvan overtone singing',
         place: 'sygyt style · 2019',
         about: 'A demonstration of Tuvan overtone singing in the sygyt style. In Tuvan throat singing, the performer hums a fundamental pitch and—simultaneously—manipulates the overtones that belong to that fundamental pitch, creating a melody.',
@@ -369,9 +423,11 @@ export const CHANNELS = [
     name: 'Signals',
     blurb: 'what only machines can hear',
     bed: 'air',
+    pano: { dir: 'right', haze: '#05070a', overlap: 0.1, creep: 0.04, gap: 0.25, bleed: 0.18, breathe: 0.03 },
     tracks: [
       {
         file: 'wow-signal', mode: 'loop',
+        art: { img: 'art/signals/wow-signal-back.webp', front: 'art/signals/wow-signal-front.webp', fx: [{ type: 'stars', region: [0, 0, 1, 0.4], n: 70, alpha: 0.5 }, { type: 'spectro', region: [0.42, 0.04, 0.8, 0.46], color: '255,232,195', alpha: 0.75, lo: 8, hi: 0.2, adapt: 0, floor: 22 }, { type: 'printout', x: 0.88, y: 0.14 }] },
         title: 'The Wow! signal',
         place: 'Big Ear radio telescope, Ohio · 15 August 1977',
         about: 'The Wow! signal was a strong narrowband radio signal detected on August 15, 1977, by Ohio State University\'s Big Ear radio telescope. The signal appeared to come from the direction of the constellation Sagittarius and bore expected hallmarks of extraterrestrial origin. Its intensity was printed as “6EQUJ5”, one value every 12 seconds; here those six values become the loudness of a single tone.',
@@ -380,6 +436,7 @@ export const CHANNELS = [
       },
       {
         file: 'aurora-radio', mode: 'loop',
+        art: { img: 'art/signals/aurora-radio-photo.webp', front: 'art/signals/aurora-radio-front.webp', credit: 'Photo: aurora over black spruce near Churchill, Manitoba, Emmanuel Milou, CC BY-SA 2.0', fx: [{ type: 'spectro', region: [0.06, 0.03, 0.94, 0.58], color: '160,255,210', alpha: 0.5, lo: 6, hi: 0.24 }] },
         title: 'The magnetosphere singing',
         place: 'Grass River, Manitoba · 23 August 1996',
         about: 'Spectacular "nose-whistler" alongside hissband and triggered upward-rising emissions similar to bird calls. Features sustained echo-trains and initiating lightning static burst. "Natural Radio" describes naturally-occurring electromagnetic (radio) signals emanating from lightning storms, aurora, and most importantly, Earth\'s magnetic field.',
@@ -388,6 +445,7 @@ export const CHANNELS = [
       },
       {
         file: 'tohoku-quake', mode: 'loop',
+        art: { img: 'art/signals/tohoku-quake-photo.webp', front: 'art/signals/tohoku-quake-front.webp', credit: 'Photo: a tunnel of the Matsushiro underground complex (the observatory is in its neighbouring tunnels), baku13, CC BY-SA 2.1 JP', fx: [{ type: 'glow', x: 0.36, y: 0.24, r: 0.22, color: '255,215,150', alpha: 0.05, react: 0.35, pulse: 0.4 }, { type: 'trace', y: 0.66, x0: 0.3, x1: 0.95, amp: 0.06, color: '255,205,140', alpha: 0.6 }] },
         title: 'The Earth ringing',
         place: 'Matsushiro, Japan · 11 March 2011',
         about: 'On 11 March 2011, at 14:46:24 local time, a Mw 9.0–9.1 undersea megathrust earthquake occurred in the Pacific Ocean, 72 km east of the Oshika Peninsula of the Tōhoku region of Japan. It lasted approximately six minutes and caused a tsunami. Here, four hours of seismometer data from Matsushiro are sped up 400 times.',
@@ -396,6 +454,7 @@ export const CHANNELS = [
       },
       {
         file: 'uvb76', mode: 'loop',
+        art: { img: 'art/signals/uvb76-back.webp', front: 'art/signals/uvb76-front.webp', fx: [{ type: 'flash', onImage: true, region: [0.645, 0.085, 0.655, 0.095], color: '255,70,60', r: 0.022, rate: 3, life: 0.5, alpha: 0.9 }, { type: 'snow', n: 90, alpha: 0.35 }] },
         title: 'The Buzzer',
         place: '4625 kHz, Russia · 8 February 2025',
         about: 'UVB-76, also known by the nickname "the Buzzer", is a shortwave radio station that broadcasts on the frequency of 4625 kHz. It broadcasts a short, monotonous buzz tone, repeating at a rate of approximately 25 tones per minute, 24 hours per day. Sometimes, the buzzer signal is interrupted and a voice transmission in Russian takes place.',
@@ -404,6 +463,7 @@ export const CHANNELS = [
       },
       {
         file: 'gong-station', mode: 'loop',
+        art: { img: 'art/signals/gong-station-back.webp', front: 'art/signals/gong-station-front.webp', fx: [{ type: 'glow', x: 0.88, y: 0.46, r: 0.16, color: '255,200,130', alpha: 0.07, react: 0.3, pulse: 0.5 }, { type: 'digits', region: [0.5, 0.12, 0.8, 0.42], color: '255,222,175', alpha: 0.5 }] },
         title: 'The Gong',
         place: 'East Germany · around 1988',
         about: 'The Gong, a numbers station operated by East German secret services. The transmission began with eight separate chimes from an old clock. Each message was composed of five digits corresponding to the agent\'s code, followed by a coded message.',
@@ -412,6 +472,7 @@ export const CHANNELS = [
       },
       {
         file: 'cherry-ripe', mode: 'loop',
+        art: { img: 'art/signals/cherry-ripe-back.webp', front: 'art/signals/cherry-ripe-front.webp', fx: [{ type: 'flash', onImage: true, region: [0.38, 0.12, 0.72, 0.32], color: '255,70,60', r: 0.012, rate: 2, life: 1.2, alpha: 0.8 }, { type: 'digits', region: [0.1, 0.12, 0.45, 0.42], color: '210,225,255', alpha: 0.45 }] },
         title: 'Cherry Ripe',
         place: 'shortwave numbers station E03a',
         about: 'Cherry Ripe, a numbers station of identical format to the Lincolnshire Poacher, is believed to have been broadcast from Guam, and later Australia, for agents working in Asia. It used several bars from its namesake folk song as its interval signal. Cherry Ripe ceased broadcasting in December 2009.',
@@ -420,6 +481,7 @@ export const CHANNELS = [
       },
       {
         file: 'g06-station', mode: 'loop',
+        art: { img: 'art/signals/g06-station-back.webp', front: 'art/signals/g06-station-front.webp', fx: [{ type: 'rain', n: 120, alpha: 0.1 }, { type: 'glow', x: 0.57, y: 0.6, r: 0.14, color: '255,190,110', alpha: 0.06, react: 0.35 }, { type: 'digits', region: [0.3, 0.1, 0.75, 0.4], color: '255,214,160', alpha: 0.45 }] },
         title: 'The German lady',
         place: 'numbers station G06 · 2018',
         about: 'G06 is the German language mode of the Russian 6 operator. Most of its schedules were retired at the end of 2019, before being fully retired from regular operation in March 2021.',
