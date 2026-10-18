@@ -435,4 +435,5 @@ export const CHANNELS = [
   },
 ];
 
-export const LIVE_BASE = 'http://locus.creacast.com:9001/';
+// Locus Sonus serves the same streams over https on 9443, so they work on an https page
+export const LIVE_BASE = 'https://locus.creacast.com:9443/';
