@@ -56,6 +56,7 @@ export function panorama(cfg) {
 
   const PW = () => (vertical ? W : Lp), PH = () => (vertical ? Lp : H);
   const wrap = (v) => v - T * Math.floor(v / T);
+  const gapOf = (p) => p.gapAfter ?? cfg.gap ?? 0;   // a channel-wide gap unless a panel sets its own
   const home = (i) => P[i] + centre;          // camera position that centres panel i
 
   // a smooth ramp along the axis, as gradient stops
@@ -85,7 +86,7 @@ export function panorama(cfg) {
     }
     // feather the leading edge (where it overlaps the previous panel), and the
     // trailing edge too if empty space follows
-    const f = Lp * overlap, trail = (p.gapAfter || 0) > 0;
+    const f = Lp * overlap, trail = gapOf(p) > 0;
     const along = vertical ? ph : pw;
     let grad = vertical ? g.createLinearGradient(0, 0, 0, ph) : g.createLinearGradient(0, 0, pw, 0);
     const lead = f / along;
@@ -151,7 +152,7 @@ export function panorama(cfg) {
       // on a panel longer than the screen, wander through most of its length
       creepPx = Math.max((cfg.creep ?? CREEP) * S, centre * 0.85);
       P = []; let pos = 0;
-      for (const p of cfg.panels) { P.push(pos); pos += S + (p.gapAfter || 0) * L; }
+      for (const p of cfg.panels) { P.push(pos); pos += S + gapOf(p) * L; }
       T = pos;
       stars = null;
       cache = cfg.panels.map(() => null);
