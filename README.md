@@ -9,10 +9,10 @@ It opens straight onto a random channel and a random sound. Click anywhere for s
 | | | |
 |---|---|---|
 | **Above** | Earth's chorus from the Van Allen Probes ("Earthsong"); Mars wind, a dust devil and a meteoroid impact; Juno passing Ganymede; Saturn's auroral radio and lightning; Voyager 1 in interstellar plasma; the Perseus black hole | real NASA images, climbing with the gaps between worlds to scale |
-| **Below** | a reef, orcas, a humpback, bearded seals, a blue whale, a singing iceberg, an iceberg breaking up, the Upsweep, the Bloop | layered underwater panorama, descending |
-| **Wild** | gibbons, howler monkeys, a bellbird, a lyrebird, spadefoot toads, loons, a nightingale, higurashi | layered panorama, dawn to dusk |
-| **Cities** | Venice at dawn, cafés in Istanbul and Greenland, Cairo's market, Marrakech, Hong Kong harbour, the Seoul subway, the Moscow metro | real photographs and generated scenes, joined by dark "tunnels" |
-| **Signals** | the Wow! signal, aurora natural radio, the Tōhoku earthquake, the Buzzer, the Gong, Cherry Ripe, the German lady | listening posts, with the signal itself drawn in: a live spectrogram, a seismograph trace, the 6EQUJ5 printout, numbers surfacing |
+| **Below** | a reef, orcas, a humpback, bearded seals, a blue whale, a singing iceberg, an iceberg breaking up, the Upsweep, the Bloop | layered underwater panorama, descending, with fish, turtles, seals and real deep-sea jellies drifting through |
+| **Wild** | gibbons, howler monkeys, a bellbird, a lyrebird, spadefoot toads, loons, a nightingale, higurashi | one continuous panorama, dawn to dusk and round again |
+| **Cities** | Venice at dawn, cafés in Istanbul and Greenland, Cairo's market, Marrakech, Hong Kong harbour, the Seoul subway, the Moscow metro | one continuous dream-panorama: through an arch in St Mark's into a tea house, out into the souk, down into the metro and up into the Arctic |
+| **Signals** | the Wow! signal, aurora natural radio, the Tōhoku earthquake, the Buzzer, the Gong, Cherry Ripe, the German lady | one continuous night of listening posts, with the signal itself drawn in: a live spectrogram, a seismograph trace, the 6EQUJ5 printout, numbers surfacing |
 | **Now** | live Locus Sonus open microphones in Kyoto, Amsterdam, Bristol, Brussels, the Alps and Jeju | a globe that turns to the microphone |
 
 (A seventh channel, **Voices**, with the oldest recorded voices, is in the code but switched off with `hidden: true` in `js/channels.js`.)
@@ -33,10 +33,10 @@ python3 -m http.server 8000
 ## How it works
 
 - **Sound** (`js/audio.js`): each channel has a synthesized noise bed (thin air, deep water, wind) under real recordings that cycle with cross-fades. Short clips recur with silences between them, like calls in the distance, so nothing sounds looped. Live streams are metered and auto-levelled, and skipped if offline or sending dead air. Everything feeds one analyser that the visuals listen to.
-- **Panoramas** (`js/panorama.js`): one image panel per sound, in strip order, cross-faded at feathered seams. The camera creeps across the current panel and glides to the next one when the sound changes — sideways, up or down depending on the channel. Panels can have a transparent foreground layer that moves 1.6× faster for parallax, with mist, light shafts, particles and fireflies drawn between the layers.
+- **Panoramas** (`js/panorama.js`): one image panel per sound, in strip order, cross-faded at feathered seams. The camera creeps across the current panel and glides to the next one when the sound changes — sideways, up or down depending on the channel. Panels can have a transparent foreground layer that moves 1.6× faster for parallax, with mist, light shafts, particles, fireflies and swimming creatures drawn between the layers. Swimmers are sprites, tinted toward the water colour and blurred by depth so far ones sink into the blue.
 - **Procedural scenes** (`js/scenes.js`) for channels without a panorama, including the Signals waterfall.
 - **Catalogue** (`js/channels.js`): every track, caption, source and credit.
-- **Art pipeline** (`art/tools/`): `manifest.py` holds the scene prompts, `run.py` generates background and foreground layers, `prep.py` turns them into WebP.
+- **Art pipeline** (`art/tools/`): `manifest.py` holds the scene prompts, `run.py` generates background and foreground layers, `prep.py` turns them into WebP. Wild, Cities and Signals are continuous: `chains.py` describes each strip and `run_chains.py` outpaints every panel from the edge of the one before (the last one from both neighbours, closing the loop), then `prep_chains.py` checks and repairs the seams. `sprites.py` generates the Below swimmers; `matte.py` lifts real NOAA deep-sea photographs off their water into translucent sprites.
 
 The Wow! signal has no recording — Big Ear only printed numbers — so it's sonified here from Jerry Ehman's published intensities (`6EQUJ5`, one value every 12 s) as a 1420.4556 Hz tone, the signal's frequency scaled down a million times. The Tōhoku earthquake is IU.MAJO seismometer data from EarthScope, sped up 400×.
 
@@ -54,7 +54,8 @@ The **code** is MIT (see `LICENSE`). The sounds, images and quoted texts belong 
 - **Stephen P. McGreevy**, via the University of Iowa — VLF natural radio. Licence not stated.
 - **Locus Sonus** — live open-microphone streams.
 - Caption texts quote the sources named in each caption, including Wikipedia (CC BY-SA) and Priyom.org (CC BY-NC-SA).
-- **Photographs** in Cities and Signals (Venice, Moscow, the Churchill aurora, the Matsushiro tunnel) and the Tuva steppe in Voices come from Wikimedia Commons contributors under CC BY / CC BY-SA, credited in each caption.
-- Other panorama scenes and the foreground layers are AI-generated illustrations.
+- **NOAA Ocean Exploration** — the deep-sea jellies drifting through Below: *Atolla wyvillei* (Operation Deep Scope 2004), *Colobonema sericeum* and a ctenophore (CC BY-SA 2.0, via NOAA Ocean Explorer's Flickr), *Beroe abyssicola* and a physonect siphonophore (public domain), credited in the captions.
+- **Photographs** of the Tuva steppe and others in Voices come from Wikimedia Commons contributors under CC BY / CC BY-SA, credited in each caption.
+- Other panorama scenes, the foreground layers and the other swimmers are AI-generated illustrations.
 
 If you're a rights-holder and would like a credit corrected or something removed, please open an issue.

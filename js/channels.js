@@ -104,7 +104,7 @@ const ALL = [
     tracks: [
       {
         file: 'damselfish', mode: 'loop',
-        art: { img: 'art/below/damselfish-back.webp', front: 'art/below/damselfish-front.webp', fx: [{ type: 'rays', alpha: 0.05 }, { type: 'shimmer', y: 0.03 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
+        art: { img: 'art/below/damselfish-back.webp', front: 'art/below/damselfish-front.webp', fx: [{ type: 'swimmers', kinds: [{ s: 'chromis', n: [6, 14], len: 0.066, speed: 0.9, every: 10, max: 3, start: 2, y: [0.3, 0.75], z: [0.2, 1] }, { s: 'butterflyfish', n: [1, 2], len: 0.088, speed: 0.5, every: 25, max: 1, y: [0.45, 0.8], z: [0.4, 1] }, { s: 'turtle', len: 0.28, speed: 0.22, every: 70, max: 1, start: 0, y: [0.2, 0.45], z: [0.1, 0.45] }, { s: 'reef-shark', len: 0.336, speed: 0.3, every: 90, max: 1, start: 0, y: [0.3, 0.6], z: [0, 0.25] }] }, { type: 'rays', alpha: 0.05 }, { type: 'shimmer', y: 0.03 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
         title: 'A reef at work',
         place: 'American Samoa',
         about: 'As the male damselfish swims down the water column, it creates a pulsed sound. Females determine the male courtship rates using sounds that are produced during signal jumps.',
@@ -113,7 +113,7 @@ const ALL = [
       },
       {
         file: 'orcas', mode: 'events',
-        art: { img: 'art/below/orcas-back.webp', front: 'art/below/orcas-front.webp', fx: [{ type: 'rays', alpha: 0.045 }, { type: 'shimmer', y: 0.03 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
+        art: { img: 'art/below/orcas-back.webp', front: 'art/below/orcas-front.webp', fx: [{ type: 'swimmers', kinds: [{ s: 'salmon', n: [1, 3], len: 0.154, speed: 0.6, every: 28, max: 1, y: [0.45, 0.85], z: [0.2, 0.8] }, { s: 'herring', n: [12, 24], len: 0.055, speed: 1, every: 22, max: 1, y: [0.4, 0.85], z: [0.05, 0.45] }] }, { type: 'rays', alpha: 0.045 }, { type: 'shimmer', y: 0.03 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
         title: 'Orcas',
         place: 'Glacier Bay, Alaska',
         about: 'Sound recording of killer whales, Glacier Bay National Park and Preserve, Alaska. The high-pitched whistles and buzzing sounds of a killer whale\'s vocalization.',
@@ -122,7 +122,7 @@ const ALL = [
       },
       {
         file: 'humpback', mode: 'events',
-        art: { img: 'art/below/humpback-back.webp', front: 'art/below/humpback-front.webp', fx: [{ type: 'rays', alpha: 0.035 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
+        art: { img: 'art/below/humpback-back.webp', front: 'art/below/humpback-front.webp', fx: [{ type: 'swimmers', kinds: [{ s: 'herring', n: [20, 36], len: 0.055, speed: 1.1, every: 16, max: 2, start: 1, y: [0.45, 0.9], z: [0.05, 0.5] }, { s: 'jellyfish', drift: true, len: 0.11, speed: 0.12, every: 30, max: 2, y: [0.5, 0.95], z: [0.3, 0.9] }] }, { type: 'rays', alpha: 0.035 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
         title: 'Humpback whale',
         place: 'Glacier Bay, Alaska',
         about: 'Sound recording of a humpback whale, Glacier Bay National Park and Preserve, Alaska. Males produce a complex song that typically lasts from 4 to 33 minutes.',
@@ -131,7 +131,7 @@ const ALL = [
       },
       {
         file: 'bearded-seals', mode: 'loop',
-        art: { img: 'art/below/bearded-seals-back.webp', front: 'art/below/bearded-seals-front.webp', fx: [{ type: 'glow', x: 0.5, y: 0.15, r: 0.45, color: '200,250,255', alpha: 0.06, react: 0.2 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
+        art: { img: 'art/below/bearded-seals-back.webp', front: 'art/below/bearded-seals-front.webp', fx: [{ type: 'swimmers', kinds: [{ s: 'arctic-cod', n: [3, 8], len: 0.077, speed: 0.6, every: 18, max: 2, start: 1, y: [0.45, 0.9], z: [0.2, 0.9] }, { s: 'ringed-seal', len: 0.224, speed: 0.4, every: 75, max: 1, start: 0, y: [0.25, 0.5], z: [0.05, 0.35] }] }, { type: 'glow', x: 0.5, y: 0.15, r: 0.45, color: '200,250,255', alpha: 0.06, react: 0.2 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
         title: 'Bearded seals',
         place: 'Svalbard, Arctic Ocean · 2007',
         about: 'Recording made of bearded seals by Max Eastley from a ship in Svalbard, using a hydrophone. The sounds of the bearded seal usually consist of a long oscillating trill lasting for a minute or more followed by a short, deep moan.',
@@ -140,7 +140,7 @@ const ALL = [
       },
       {
         file: 'blue-whale', mode: 'events',
-        art: { img: 'art/below/blue-whale-back.webp', front: 'art/below/blue-whale-front.webp', fx: [{ type: 'rays', alpha: 0.03, len: 0.7 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
+        art: { img: 'art/below/blue-whale-back.webp', front: 'art/below/blue-whale-front.webp', fx: [{ type: 'swimmers', kinds: [{ s: 'jellyfish', drift: true, n: [1, 2], len: 0.099, speed: 0.12, every: 14, max: 4, start: 2, y: [0.3, 1], z: [0.1, 0.9] }, { s: 'herring', n: [25, 40], len: 0.044, speed: 1, every: 45, max: 1, start: 0, y: [0.6, 0.9], z: [0, 0.25] }] }, { type: 'rays', alpha: 0.03, len: 0.7 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
         title: 'Blue whale',
         place: 'NOAA hydrophone',
         about: 'Blue whales produce some of the loudest and lowest frequency vocalizations in the animal kingdom, and their inner ears appear well adapted for detecting low-frequency sounds. The fundamental frequency for blue whale vocalizations ranges from 8 to 25 Hz.',
@@ -149,7 +149,7 @@ const ALL = [
       },
       {
         file: 'iceberg-tremor', mode: 'loop',
-        art: { img: 'art/below/iceberg-tremor-back.webp', front: 'art/below/iceberg-tremor-front.webp', fx: [{ type: 'glow', x: 0.62, y: 0.2, r: 0.45, color: '190,230,255', alpha: 0.05, react: 0.3 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
+        art: { img: 'art/below/iceberg-tremor-back.webp', front: 'art/below/iceberg-tremor-front.webp', credit: 'Drifting: Beroe abyssicola, NOAA Ocean Exploration', fx: [{ type: 'swimmers', kinds: [{ s: 'arctic-cod', n: [4, 10], len: 0.066, speed: 0.6, every: 20, max: 2, start: 1, y: [0.35, 0.75], z: [0.1, 0.8] }, { s: 'jellyfish', drift: true, len: 0.088, speed: 0.1, every: 35, max: 1, y: [0.5, 1], z: [0.2, 0.7] }, { s: 'beroe', drift: true, len: 0.11, speed: 0.07, every: 50, max: 1, start: 1, y: [0.3, 0.9], z: [0.2, 0.8] }] }, { type: 'glow', x: 0.62, y: 0.2, r: 0.45, color: '190,230,255', alpha: 0.05, react: 0.3 }, { type: 'motes', color: '220,240,255', n: 80, fall: -4, drift: 0, alpha: 0.35 }] },
         title: 'An iceberg singing',
         place: 'NOAA hydrophone · 2006',
         about: 'Iceberg harmonic tremor: generated by iceberg in contact with the seafloor or other iceberg. This spectrogram has a fundamental frequency of 40 Hz, with a 40 Hz overtone spacing. Audio sped up 3X normal.',
@@ -158,7 +158,7 @@ const ALL = [
       },
       {
         file: 'iceberg-calving', mode: 'loop',
-        art: { img: 'art/below/iceberg-calving-back.webp', front: 'art/below/iceberg-calving-front.webp', fx: [{ type: 'motes', color: '230,248,255', n: 110, fall: 14, drift: 0, size: 2.2, alpha: 0.45 }, { type: 'glow', x: 0.4, y: 0.35, r: 0.5, color: '190,235,255', alpha: 0.04, react: 0.4 }] },
+        art: { img: 'art/below/iceberg-calving-back.webp', front: 'art/below/iceberg-calving-front.webp', fx: [{ type: 'swimmers', kinds: [{ s: 'jellyfish', drift: true, len: 0.088, speed: 0.1, every: 40, max: 1, y: [0.6, 1], z: [0.1, 0.6] }, { s: 'arctic-cod', n: [3, 6], len: 0.066, speed: 1.2, every: 35, max: 1, start: 0, y: [0.6, 0.9], z: [0.1, 0.6] }] }, { type: 'motes', color: '230,248,255', n: 110, fall: 14, drift: 0, size: 2.2, alpha: 0.45 }, { type: 'glow', x: 0.4, y: 0.35, r: 0.5, color: '190,235,255', alpha: 0.04, react: 0.4 }] },
         title: 'An iceberg breaking apart',
         place: 'Southern Ocean · 2008',
         about: 'An iceberg calving (large section of iceberg breaking off) while adrift. The calving signal is short duration, broad band from 1-440 Hz generated by ice cracking and crack propagation. Audio sped up 3X normal.',
@@ -167,7 +167,7 @@ const ALL = [
       },
       {
         file: 'upsweep', mode: 'loop',
-        art: { img: 'art/below/upsweep-back.webp', front: 'art/below/upsweep-front.webp', fx: [{ type: 'glow', x: 0.7, y: 0.7, r: 0.3, color: '255,140,70', alpha: 0.05, react: 0.4, pulse: 0.6 }, { type: 'motes', color: '200,225,255', n: 50, fall: -2, drift: 0, alpha: 0.25 }] },
+        art: { img: 'art/below/upsweep-back.webp', front: 'art/below/upsweep-front.webp', credit: 'Drifting: Atolla wyvillei, NOAA Ocean Explorer (Operation Deep Scope 2004), CC BY-SA 2.0; a ctenophore, NOAA Ocean Exploration, CC BY-SA 2.0', fx: [{ type: 'swimmers', kinds: [{ s: 'lanternfish', n: [3, 9], len: 0.066, speed: 0.6, every: 14, max: 2, start: 1, y: [0.15, 0.55], z: [0.1, 0.9] }, { s: 'atolla', drift: true, len: 0.132, speed: 0.08, every: 45, max: 1, start: 1, y: [0.2, 0.7], z: [0.3, 0.9] }, { s: 'ctenophore', drift: true, len: 0.11, speed: 0.07, every: 60, max: 1, start: 0, y: [0.3, 0.9], z: [0.2, 0.8] }] }, { type: 'glow', x: 0.7, y: 0.7, r: 0.3, color: '255,140,70', alpha: 0.05, react: 0.4, pulse: 0.6 }, { type: 'motes', color: '200,225,255', n: 50, fall: -2, drift: 0, alpha: 0.25 }] },
         title: 'Upsweep',
         place: 'South Pacific, near 54°S 140°W · heard since 1991',
         about: 'A long train of narrow-band upsweeping sounds of several seconds duration each. The source level is high enough to be recorded throughout the Pacific. The source can be roughly located at 54°S, 140°W, near the location of inferred volcanic seismicity, but the origin of the sound is unresolved. Sped up 20 times.',
@@ -176,7 +176,7 @@ const ALL = [
       },
       {
         file: 'bloop', mode: 'events',
-        art: { img: 'art/below/bloop-back.webp', front: 'art/below/bloop-front.webp', fx: [{ type: 'motes', color: '200,225,255', n: 40, fall: -2, drift: 0, alpha: 0.25 }, { type: 'glow', x: 0.5, y: 0.12, r: 0.55, color: '120,180,255', alpha: 0.03, react: 0.5 }] },
+        art: { img: 'art/below/bloop-back.webp', front: 'art/below/bloop-front.webp', credit: 'Drifting: Atolla wyvillei, NOAA Ocean Explorer (Operation Deep Scope 2004), CC BY-SA 2.0; Colobonema sericeum, NOAA Ocean Explorer, CC BY-SA 2.0; a physonect siphonophore, NOAA Ocean Exploration', fx: [{ type: 'swimmers', alpha: 0.85, water: 'rgb(6,16,30)', kinds: [{ s: 'sperm-whale', len: 0.84, speed: 0.1, every: 150, max: 1, start: 0, y: [0.35, 0.6], z: [0, 0.12] }, { s: 'lanternfish', n: [2, 5], len: 0.066, speed: 0.5, every: 22, max: 1, start: 1, y: [0.3, 0.85], z: [0.1, 0.8] }, { s: 'atolla', drift: true, len: 0.132, speed: 0.08, every: 50, max: 1, start: 1, y: [0.3, 0.9], z: [0.2, 0.9] }, { s: 'colobonema', drift: true, len: 0.154, speed: 0.08, every: 55, max: 1, start: 1, y: [0.2, 0.8], z: [0.2, 0.9] }, { s: 'siphonophore', drift: true, len: 0.11, speed: 0.05, every: 80, max: 1, start: 0, y: [0.3, 0.9], z: [0.1, 0.7] }] }, { type: 'motes', color: '200,225,255', n: 40, fall: -2, drift: 0, alpha: 0.25 }, { type: 'glow', x: 0.5, y: 0.12, r: 0.55, color: '120,180,255', alpha: 0.03, react: 0.5 }] },
         title: 'The Bloop',
         place: 'near Antarctica · 1997',
         about: 'The broad spectrum sounds recorded in the summer of 1997 are consistent with icequakes generated by large icebergs as they crack and fracture. Icequakes are of sufficient amplitude to be detected on multiple sensors at a range of over 5000 km. Recorded signal sped up 16 times.',
@@ -190,11 +190,11 @@ const ALL = [
     name: 'Wild',
     blurb: 'forests and creatures',
     bed: 'wind',
-    pano: { dir: 'right', haze: '#3a3a30', aspect: 1.5, overlap: 0.14, bleed: 0.22 },
+    pano: { dir: 'right', haze: '#3a3a30', aspect: 1.5, overlap: 0.3, bleed: 0.12 },
     tracks: [
       {
         file: 'gibbons', mode: 'events',
-        art: { img: 'art/wild/gibbons-back.webp', front: 'art/wild/gibbons-front.webp', fx: [{ type: 'mist', at: [0.45, 0.6], alpha: 0.12 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }] },
+        art: { img: 'art/wild/gibbons-pano.webp', front: 'art/wild/gibbons-front.webp', fx: [{ type: 'mist', at: [0.45, 0.6], alpha: 0.12 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }] },
         title: 'Gibbons',
         place: 'Phuket, Thailand · 29 October 2013',
         about: 'Gibbons live in subtropical and tropical forests from eastern Bangladesh and Northeast India to Southeast Asia and Indonesia. The song can be used to identify not only which species of gibbon is singing, but also the area from which it comes.',
@@ -203,7 +203,7 @@ const ALL = [
       },
       {
         file: 'howlers', mode: 'loop',
-        art: { img: 'art/wild/howlers-back.webp', front: 'art/wild/howlers-front.webp', fx: [{ type: 'mist', at: [0.42, 0.6], alpha: 0.12 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }] },
+        art: { img: 'art/wild/howlers-pano.webp', front: 'art/wild/howlers-front.webp', fx: [{ type: 'mist', at: [0.42, 0.6], alpha: 0.12 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }] },
         title: 'Howler monkeys',
         place: 'Santa Rosa National Park, Costa Rica',
         about: 'The mantled howler gets the name "howler" from the calls made by the males, particularly at dawn and dusk. These calls are very loud and can be heard from several kilometers. Male mantled howlers have hyoid bones that are 25 times larger than similarly sized spider monkeys, and this allows the bone to act like the body of a drum in amplifying the calls.',
@@ -212,7 +212,7 @@ const ALL = [
       },
       {
         file: 'bellbird', mode: 'loop',
-        art: { img: 'art/wild/bellbird-back.webp', front: 'art/wild/bellbird-front.webp', fx: [{ type: 'rays', color: '255,245,210', alpha: 0.05, len: 0.85 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }] },
+        art: { img: 'art/wild/bellbird-pano.webp', front: 'art/wild/bellbird-front.webp', fx: [{ type: 'rays', color: '255,245,210', alpha: 0.05, len: 0.85 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }] },
         title: 'Bellbird',
         place: 'New Zealand · 2012',
         about: 'Male Bellbird vocalising at intervals of 20 to 30 seconds. The bird is constantly turning its head apparently listening and watching then extends its whole body to emit each loud note. Recorded near birdfeeders in the Karori wildlife sanctuary (Zealandia), Wellington, New Zealand.',
@@ -221,7 +221,7 @@ const ALL = [
       },
       {
         file: 'lyrebird', mode: 'loop',
-        art: { img: 'art/wild/lyrebird-back.webp', front: 'art/wild/lyrebird-front.webp', fx: [{ type: 'rays', color: '255,245,210', alpha: 0.05, len: 0.85 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }] },
+        art: { img: 'art/wild/lyrebird-pano.webp', front: 'art/wild/lyrebird-front.webp', fx: [{ type: 'rays', color: '255,245,210', alpha: 0.05, len: 0.85 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }] },
         title: 'A lyrebird doing impressions',
         place: 'northern Sydney · 15 April 2016',
         about: 'A Superb lyrebird (Menura novaehollandiae) sings in a suburban backyard, mimicking several Australian native bird calls. According to David Attenborough, the superb lyrebird displays one of the most sophisticated voice skills within the animal kingdom—"the most elaborate, the most complex, and the most beautiful".',
@@ -230,7 +230,7 @@ const ALL = [
       },
       {
         file: 'spadefoot-toads', mode: 'loop',
-        art: { img: 'art/wild/spadefoot-toads-back.webp', front: 'art/wild/spadefoot-toads-front.webp', fx: [{ type: 'rain', n: 110, alpha: 0.1 }, { type: 'mist', at: [0.55], alpha: 0.1 }] },
+        art: { img: 'art/wild/spadefoot-toads-pano.webp', front: 'art/wild/spadefoot-toads-front.webp', fx: [{ type: 'rain', n: 110, alpha: 0.1 }, { type: 'mist', at: [0.55], alpha: 0.1 }] },
         title: 'Spadefoot toads after rain',
         place: 'Saguaro National Park, Arizona',
         about: 'The squelching ribbiting sound of Couch\'s Spadefoot Toads with background sounds of crickets chirping at night. When a summer thunderstorm arrives, the male toads emerge from underground and look for pools of rainwater.',
@@ -239,7 +239,7 @@ const ALL = [
       },
       {
         file: 'loons', mode: 'loop',
-        art: { img: 'art/wild/loons-back.webp', front: 'art/wild/loons-front.webp', fx: [{ type: 'mist', at: [0.6], alpha: 0.14, height: 0.07 }] },
+        art: { img: 'art/wild/loons-pano.webp', front: 'art/wild/loons-front.webp', fx: [{ type: 'mist', at: [0.6], alpha: 0.14, height: 0.07 }] },
         title: 'Loons on the lake',
         place: 'Yellowstone Lake, Wyoming · 2016',
         about: 'Common loons make a series of tremelo calls on Yellowstone Lake.',
@@ -248,7 +248,7 @@ const ALL = [
       },
       {
         file: 'nightingale', mode: 'loop',
-        art: { img: 'art/wild/nightingale-back.webp', front: 'art/wild/nightingale-front.webp', fx: [{ type: 'stars', region: [0, 0, 1, 0.32], n: 80, alpha: 0.6 }, { type: 'fireflies', region: [0, 0.55, 1, 0.9], n: 30 }] },
+        art: { img: 'art/wild/nightingale-pano.webp', front: 'art/wild/nightingale-front.webp', fx: [{ type: 'stars', region: [0, 0, 1, 0.32], n: 80, alpha: 0.6 }, { type: 'fireflies', region: [0, 0.55, 1, 0.9], n: 30 }] },
         title: 'A nightingale',
         place: 'Willow scrub · 26 May 2011',
         about: 'Recorded in willow shrubs from the distance of 3 meters. The common nightingale is a small passerine bird which is known for its powerful and beautiful song, often described as one of the most beautiful sounds in nature.',
@@ -257,7 +257,7 @@ const ALL = [
       },
       {
         file: 'higurashi', mode: 'loop',
-        art: { img: 'art/wild/higurashi-back.webp', front: 'art/wild/higurashi-front.webp', fx: [{ type: 'rays', color: '255,210,150', alpha: 0.04 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }, { type: 'fireflies', region: [0, 0.6, 1, 0.92], n: 14 }] },
+        art: { img: 'art/wild/higurashi-pano.webp', front: 'art/wild/higurashi-front.webp', fx: [{ type: 'rays', color: '255,210,150', alpha: 0.04 }, { type: 'motes', color: '255,228,175', n: 50, fall: 1, drift: 3, alpha: 0.32 }, { type: 'fireflies', region: [0, 0.6, 1, 0.92], n: 14 }] },
         title: 'Higurashi',
         place: 'Japan · 28 July 2018, 7:02 pm',
         about: 'Tanna japonensis, also called the evening cicada or higurashi, is a species of cicada. It is distributed throughout East Asia, and is most common in Japan. Its shrill call can be heard most often in the morning and evening.',
@@ -271,11 +271,11 @@ const ALL = [
     name: 'Cities',
     blurb: 'streets, cafés, stations',
     bed: null,
-    pano: { dir: 'left', haze: '#07080c', overlap: 0.1, creep: 0.04, gap: 0.3, bleed: 0.18, breathe: 0.035 },
+    pano: { dir: 'left', haze: '#07080c', aspect: 1.5, overlap: 0.3, creep: 0.1, bleed: 0.12 },
     tracks: [
       {
         file: 'venice-dawn', mode: 'loop',
-        art: { img: 'art/cities/venice-dawn-photo.webp', front: 'art/cities/venice-dawn-front.webp', credit: 'Photo: Piazza San Marco at dawn, Benh LIEU SONG from Torcy, France, CC BY-SA 2.0', fx: [{ type: 'mist', at: [0.78], color: '235,228,240', alpha: 0.09, height: 0.08 }, { type: 'sheen', color: '255,226,200', alpha: 0.05, angle: 0.3, period: 60 }] },
+        art: { img: 'art/cities/venice-dawn-pano.webp', front: 'art/cities/venice-dawn-front.webp', fx: [{ type: 'mist', at: [0.78], color: '235,228,240', alpha: 0.09, height: 0.08 }, { type: 'sheen', color: '255,226,200', alpha: 0.05, angle: 0.3, period: 60 }] },
         title: 'St Mark\'s Square at dawn',
         place: 'Venice, Italy',
         about: 'St. Mark\'s Square, Venice: Quiet, early morning, occasional distant voices, footsteps and pigeons, no traffic.',
@@ -284,7 +284,7 @@ const ALL = [
       },
       {
         file: 'cafe-istanbul', mode: 'loop',
-        art: { img: 'art/cities/cafe-istanbul-back.webp', front: 'art/cities/cafe-istanbul-front.webp', fx: [{ type: 'glow', x: 0.3, y: 0.22, r: 0.3, color: '255,200,130', alpha: 0.06, react: 0.2, pulse: 0.6 }, { type: 'motes', color: '255,225,180', n: 45, fall: -2, drift: 2, alpha: 0.28 }] },
+        art: { img: 'art/cities/cafe-istanbul-pano.webp', front: 'art/cities/cafe-istanbul-front.webp', fx: [{ type: 'glow', onImage: true, x: 0.53, y: 0.2, r: 0.25, color: '255,200,130', alpha: 0.06, react: 0.2, pulse: 0.6 }, { type: 'motes', color: '255,225,180', n: 45, fall: -2, drift: 2, alpha: 0.28 }] },
         title: 'A café in Istanbul',
         place: 'Istanbul, Turkey',
         about: 'Istanbul, cafe atmosphere, with voices, cups rattled, and backgammon game played.',
@@ -293,7 +293,7 @@ const ALL = [
       },
       {
         file: 'cairo-market', mode: 'loop',
-        art: { img: 'art/cities/cairo-market-back.webp', front: 'art/cities/cairo-market-front.webp', fx: [{ type: 'rays', color: '255,220,170', alpha: 0.045, len: 0.8, n: 4 }, { type: 'motes', color: '255,225,180', n: 45, fall: -2, drift: 2, alpha: 0.28 }] },
+        art: { img: 'art/cities/cairo-market-pano.webp', front: 'art/cities/cairo-market-front.webp', fx: [{ type: 'rays', color: '255,220,170', alpha: 0.045, len: 0.8, n: 4 }, { type: 'motes', color: '255,225,180', n: 45, fall: -2, drift: 2, alpha: 0.28 }] },
         title: 'Old Town market',
         place: 'Cairo, Egypt',
         about: 'Market in Cairo\'s Old Town (no traffic).',
@@ -302,7 +302,7 @@ const ALL = [
       },
       {
         file: 'marrakech-adhan', mode: 'events',
-        art: { img: 'art/cities/marrakech-adhan-back.webp', front: 'art/cities/marrakech-adhan-front.webp', fx: [{ type: 'sheen', color: '255,210,160', alpha: 0.05, angle: 0.25, period: 50 }, { type: 'motes', color: '255,215,170', n: 35, fall: 0.5, drift: 4, alpha: 0.22 }] },
+        art: { img: 'art/cities/marrakech-adhan-pano.webp', front: 'art/cities/marrakech-adhan-front.webp', fx: [{ type: 'sheen', color: '255,210,160', alpha: 0.05, angle: 0.25, period: 50 }, { type: 'motes', color: '255,215,170', n: 35, fall: 0.5, drift: 4, alpha: 0.22 }] },
         title: 'Call to prayer',
         place: 'Koutoubia Mosque, Marrakech · 2006',
         about: 'Call to prayer from the Koutoubia Mosque in Marrakech, Morocco. The Kutubiyya Mosque or Koutoubia Mosque is the largest mosque in Marrakesh, located in the southwest medina quarter, near the Jemaa el-Fnaa market place.',
@@ -311,7 +311,7 @@ const ALL = [
       },
       {
         file: 'hongkong-harbour', mode: 'loop',
-        art: { img: 'art/cities/hongkong-harbour-back.webp', front: 'art/cities/hongkong-harbour-front.webp', fx: [{ type: 'stars', region: [0, 0.3, 1, 0.62], n: 160, alpha: 0.5 }, { type: 'shimmer', y: 0.72, n: 5, alpha: 0.06 }] },
+        art: { img: 'art/cities/hongkong-harbour-pano.webp', front: 'art/cities/hongkong-harbour-front.webp', fx: [{ type: 'stars', onImage: true, region: [0.28, 0.27, 0.85, 0.46], n: 160, alpha: 0.5 }, { type: 'shimmer', onImage: true, y: 0.5, n: 3, alpha: 0.06 }] },
         title: 'The harbour at evening',
         place: 'Hong Kong',
         about: 'Hong Kong: Harbour skyline, evening.',
@@ -320,7 +320,7 @@ const ALL = [
       },
       {
         file: 'seoul-subway', mode: 'loop',
-        art: { img: 'art/cities/seoul-subway-back.webp', front: 'art/cities/seoul-subway-front.webp', fx: [{ type: 'sheen', color: '255,250,235', alpha: 0.06, angle: 0, width: 0.08, period: 7 }] },
+        art: { img: 'art/cities/seoul-subway-pano.webp', front: 'art/cities/seoul-subway-front.webp', fx: [{ type: 'sheen', color: '255,250,235', alpha: 0.06, angle: 0, width: 0.08, period: 7 }] },
         title: 'Seoul subway, Line 3',
         place: 'Jongno 3-ga to Express Bus Terminal, Seoul · 2013',
         about: 'Seoul subway line 3, Jongro-samga station to Express bus terminal station, Seoul Metro series 3000. In 2021, the Seoul Metro operated section had an annual ridership of 237,469,000 or 650,600 passengers per day.',
@@ -329,7 +329,7 @@ const ALL = [
       },
       {
         file: 'moscow-metro', mode: 'loop',
-        art: { img: 'art/cities/moscow-metro-photo.webp', front: 'art/cities/moscow-metro-front.webp', credit: 'Photo: Mayakovskaya station, Sergey A. Demidov, CC BY 4.0', fx: [{ type: 'glow', x: 0.5, y: 0.18, r: 0.35, color: '255,235,200', alpha: 0.05, react: 0.25 }, { type: 'motes', color: '255,240,215', n: 30, fall: 1, drift: 0, alpha: 0.18 }] },
+        art: { img: 'art/cities/moscow-metro-pano.webp', front: 'art/cities/moscow-metro-front.webp', fx: [{ type: 'glow', x: 0.5, y: 0.18, r: 0.35, color: '255,235,200', alpha: 0.05, react: 0.25 }, { type: 'motes', color: '255,240,215', n: 30, fall: 1, drift: 0, alpha: 0.18 }] },
         title: 'Mayakovskaya station',
         place: 'Moscow metro',
         about: 'Mayakovskovo Metro Station, platform, continuous noise of trains arriving and departing, also footsteps and air conditioning noise.',
@@ -338,7 +338,7 @@ const ALL = [
       },
       {
         file: 'cafe-ammassalik', mode: 'loop',
-        art: { img: 'art/cities/cafe-ammassalik-back.webp', front: 'art/cities/cafe-ammassalik-front.webp', fx: [{ type: 'glow', x: 0.1, y: 0.62, r: 0.18, color: '255,160,80', alpha: 0.08, react: 0.2, pulse: 2.3 }, { type: 'snow', n: 60, alpha: 0.3, fall: 10 }] },
+        art: { img: 'art/cities/cafe-ammassalik-pano.webp', front: 'art/cities/cafe-ammassalik-front.webp', fx: [{ type: 'glow', onImage: true, x: 0.43, y: 0.42, r: 0.16, color: '255,170,90', alpha: 0.08, react: 0.2, pulse: 2.3 }, { type: 'snow', n: 60, alpha: 0.3, fall: 10 }] },
         title: 'A café in Greenland',
         place: 'Ammassalik (Tasiilaq), East Greenland',
         about: 'Cafe, Ammassalik. Tasiilaq, formerly Ammassalik, is a town on Ammassalik Island in southeastern Greenland. With 1,985 inhabitants as of 2020, it is the most populous community on the eastern coast.',
@@ -425,11 +425,11 @@ const ALL = [
     name: 'Signals',
     blurb: 'what only machines can hear',
     bed: 'air',
-    pano: { dir: 'right', haze: '#05070a', overlap: 0.1, creep: 0.04, gap: 0.25, bleed: 0.18, breathe: 0.03 },
+    pano: { dir: 'right', haze: '#05070a', aspect: 1.5, overlap: 0.3, creep: 0.1, bleed: 0.12 },
     tracks: [
       {
         file: 'wow-signal', mode: 'loop',
-        art: { img: 'art/signals/wow-signal-back.webp', front: 'art/signals/wow-signal-front.webp', fx: [{ type: 'stars', region: [0, 0, 1, 0.4], n: 70, alpha: 0.5 }, { type: 'spectro', region: [0.42, 0.04, 0.8, 0.46], color: '255,232,195', alpha: 0.75, lo: 8, hi: 0.2, adapt: 0, floor: 22 }, { type: 'printout', x: 0.88, y: 0.14 }] },
+        art: { img: 'art/signals/wow-signal-pano.webp', front: 'art/signals/wow-signal-front.webp', fx: [{ type: 'stars', region: [0, 0, 1, 0.4], n: 70, alpha: 0.5 }, { type: 'spectro', onImage: true, region: [0.44, 0.04, 0.74, 0.42], color: '255,232,195', alpha: 0.75, lo: 8, hi: 0.2, adapt: 0, floor: 22 }, { type: 'printout', onImage: true, x: 0.83, y: 0.17 }] },
         title: 'The Wow! signal',
         place: 'Big Ear radio telescope, Ohio · 15 August 1977',
         about: 'The Wow! signal was a strong narrowband radio signal detected on August 15, 1977, by Ohio State University\'s Big Ear radio telescope. The signal appeared to come from the direction of the constellation Sagittarius and bore expected hallmarks of extraterrestrial origin. Its intensity was printed as “6EQUJ5”, one value every 12 seconds; here those six values become the loudness of a single tone.',
@@ -438,7 +438,7 @@ const ALL = [
       },
       {
         file: 'aurora-radio', mode: 'loop',
-        art: { img: 'art/signals/aurora-radio-photo.webp', front: 'art/signals/aurora-radio-front.webp', credit: 'Photo: aurora over black spruce near Churchill, Manitoba, Emmanuel Milou, CC BY-SA 2.0', fx: [{ type: 'spectro', region: [0.06, 0.03, 0.94, 0.58], color: '160,255,210', alpha: 0.5, lo: 6, hi: 0.24 }] },
+        art: { img: 'art/signals/aurora-radio-pano.webp', front: 'art/signals/aurora-radio-front.webp', fx: [{ type: 'spectro', onImage: true, region: [0.12, 0.03, 0.8, 0.5], color: '160,255,210', alpha: 0.5, lo: 6, hi: 0.24 }] },
         title: 'The magnetosphere singing',
         place: 'Grass River, Manitoba · 23 August 1996',
         about: 'Spectacular "nose-whistler" alongside hissband and triggered upward-rising emissions similar to bird calls. Features sustained echo-trains and initiating lightning static burst. "Natural Radio" describes naturally-occurring electromagnetic (radio) signals emanating from lightning storms, aurora, and most importantly, Earth\'s magnetic field.',
@@ -447,7 +447,7 @@ const ALL = [
       },
       {
         file: 'tohoku-quake', mode: 'loop',
-        art: { img: 'art/signals/tohoku-quake-photo.webp', front: 'art/signals/tohoku-quake-front.webp', credit: 'Photo: a tunnel of the Matsushiro underground complex (the observatory is in its neighbouring tunnels), baku13, CC BY-SA 2.1 JP', fx: [{ type: 'glow', x: 0.36, y: 0.24, r: 0.22, color: '255,215,150', alpha: 0.05, react: 0.35, pulse: 0.4 }, { type: 'trace', y: 0.66, x0: 0.3, x1: 0.95, amp: 0.06, color: '255,205,140', alpha: 0.6 }] },
+        art: { img: 'art/signals/tohoku-quake-pano.webp', front: 'art/signals/tohoku-quake-front.webp', fx: [{ type: 'glow', onImage: true, x: 0.467, y: 0.45, r: 0.16, color: '255,215,150', alpha: 0.06, react: 0.35, pulse: 0.4 }, { type: 'trace', onImage: true, y: 0.8, x0: 0.22, x1: 0.72, amp: 0.05, color: '255,205,140', alpha: 0.6 }] },
         title: 'The Earth ringing',
         place: 'Matsushiro, Japan · 11 March 2011',
         about: 'On 11 March 2011, at 14:46:24 local time, a Mw 9.0–9.1 undersea megathrust earthquake occurred in the Pacific Ocean, 72 km east of the Oshika Peninsula of the Tōhoku region of Japan. It lasted approximately six minutes and caused a tsunami. Here, four hours of seismometer data from Matsushiro are sped up 400 times.',
@@ -456,7 +456,7 @@ const ALL = [
       },
       {
         file: 'uvb76', mode: 'loop',
-        art: { img: 'art/signals/uvb76-back.webp', front: 'art/signals/uvb76-front.webp', fx: [{ type: 'flash', onImage: true, region: [0.645, 0.085, 0.655, 0.095], color: '255,70,60', r: 0.022, rate: 3, life: 0.5, alpha: 0.9 }, { type: 'snow', n: 90, alpha: 0.35 }] },
+        art: { img: 'art/signals/uvb76-pano.webp', front: 'art/signals/uvb76-front.webp', fx: [{ type: 'flash', onImage: true, region: [0.488, 0.104, 0.492, 0.11], color: '255,70,60', r: 0.022, rate: 3, life: 0.5, alpha: 0.9 }, { type: 'snow', n: 90, alpha: 0.35 }] },
         title: 'The Buzzer',
         place: '4625 kHz, Russia · 8 February 2025',
         about: 'UVB-76, also known by the nickname "the Buzzer", is a shortwave radio station that broadcasts on the frequency of 4625 kHz. It broadcasts a short, monotonous buzz tone, repeating at a rate of approximately 25 tones per minute, 24 hours per day. Sometimes, the buzzer signal is interrupted and a voice transmission in Russian takes place.',
@@ -465,7 +465,7 @@ const ALL = [
       },
       {
         file: 'gong-station', mode: 'loop',
-        art: { img: 'art/signals/gong-station-back.webp', front: 'art/signals/gong-station-front.webp', fx: [{ type: 'glow', x: 0.88, y: 0.46, r: 0.16, color: '255,200,130', alpha: 0.07, react: 0.3, pulse: 0.5 }, { type: 'digits', region: [0.5, 0.12, 0.8, 0.42], color: '255,222,175', alpha: 0.5 }] },
+        art: { img: 'art/signals/gong-station-pano.webp', front: 'art/signals/gong-station-front.webp', fx: [{ type: 'glow', onImage: true, x: 0.73, y: 0.51, r: 0.14, color: '255,200,130', alpha: 0.07, react: 0.3, pulse: 0.5 }, { type: 'digits', region: [0.3, 0.14, 0.62, 0.4], color: '255,222,175', alpha: 0.5 }] },
         title: 'The Gong',
         place: 'East Germany · around 1988',
         about: 'The Gong, a numbers station operated by East German secret services. The transmission began with eight separate chimes from an old clock. Each message was composed of five digits corresponding to the agent\'s code, followed by a coded message.',
@@ -474,7 +474,7 @@ const ALL = [
       },
       {
         file: 'cherry-ripe', mode: 'loop',
-        art: { img: 'art/signals/cherry-ripe-back.webp', front: 'art/signals/cherry-ripe-front.webp', fx: [{ type: 'flash', onImage: true, region: [0.38, 0.12, 0.72, 0.32], color: '255,70,60', r: 0.012, rate: 2, life: 1.2, alpha: 0.8 }, { type: 'digits', region: [0.1, 0.12, 0.45, 0.42], color: '210,225,255', alpha: 0.45 }] },
+        art: { img: 'art/signals/cherry-ripe-pano.webp', front: 'art/signals/cherry-ripe-front.webp', fx: [{ type: 'flash', onImage: true, region: [0.716, 0.044, 0.722, 0.054], color: '255,70,60', r: 0.018, rate: 2, life: 1.2, alpha: 0.85 }, { type: 'digits', region: [0.3, 0.12, 0.6, 0.4], color: '210,225,255', alpha: 0.45 }] },
         title: 'Cherry Ripe',
         place: 'shortwave numbers station E03a',
         about: 'Cherry Ripe, a numbers station of identical format to the Lincolnshire Poacher, is believed to have been broadcast from Guam, and later Australia, for agents working in Asia. It used several bars from its namesake folk song as its interval signal. Cherry Ripe ceased broadcasting in December 2009.',
@@ -483,7 +483,7 @@ const ALL = [
       },
       {
         file: 'g06-station', mode: 'loop',
-        art: { img: 'art/signals/g06-station-back.webp', front: 'art/signals/g06-station-front.webp', fx: [{ type: 'rain', n: 120, alpha: 0.1 }, { type: 'glow', x: 0.8, y: 0.66, r: 0.12, color: '255,190,110', alpha: 0.06, react: 0.35 }, { type: 'digits', region: [0.3, 0.1, 0.75, 0.4], color: '255,214,160', alpha: 0.45 }] },
+        art: { img: 'art/signals/g06-station-pano.webp', front: 'art/signals/g06-station-front.webp', fx: [{ type: 'rain', n: 120, alpha: 0.1 }, { type: 'glow', onImage: true, x: 0.26, y: 0.58, r: 0.12, color: '255,190,110', alpha: 0.07, react: 0.35 }, { type: 'digits', region: [0.3, 0.1, 0.75, 0.4], color: '255,214,160', alpha: 0.45 }] },
         title: 'The German lady',
         place: 'numbers station G06 · 2018',
         about: 'G06 is the German language mode of the Russian 6 operator. Most of its schedules were retired at the end of 2019, before being fully retired from regular operation in March 2021.',

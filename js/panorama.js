@@ -361,7 +361,116 @@ function overlay(o) {
   return made;
 }
 
+// Water-tinted, softened copies of a sprite, one per depth band, made once:
+// far creatures sink into the water colour and lose their edges.
+const tinted = new Map();
+const BANDS = 4;
+function spriteBand(src, band, water) {
+  const key = `${src}|${band}|${water}`;
+  if (tinted.has(key)) return tinted.get(key);
+  const img = loadImage(src);
+  if (!img.complete || !img.naturalWidth) return null;
+  const far = 1 - band / (BANDS - 1);                 // 1 = farthest band
+  const s = Math.min(1, 320 / Math.max(img.naturalWidth, img.naturalHeight));
+  const w = Math.round(img.naturalWidth * s), h = Math.round(img.naturalHeight * s);
+  const pad = Math.ceil(far * 6) + 2;
+  const c = document.createElement('canvas');
+  c.width = w + pad * 2; c.height = h + pad * 2;
+  const g = c.getContext('2d');
+  g.filter = `blur(${(far * 2).toFixed(1)}px) saturate(${(1 - far * 0.35).toFixed(2)})`;
+  g.drawImage(img, pad, pad, w, h);
+  g.filter = 'none';
+  g.globalCompositeOperation = 'source-atop';
+  g.fillStyle = water; g.globalAlpha = 0.1 + far * 0.4;
+  g.fillRect(0, 0, c.width, c.height);
+  const out = { c, pad: pad / s, w: c.width / s, h: c.height / s };   // sizes in source px
+  tinted.set(key, out);
+  return out;
+}
+
 const OVERLAYS = {
+  // ---- life in the water ----
+
+  // Creatures crossing the scene behind the foreground: schools of small fish,
+  // a lone turtle or shark far off, jellyfish drifting up. Translucent and
+  // tinted by depth so they read as background, never as the subject.
+  //   kinds: [{ s: sprite name, n: [min, max] per school, len: body length (fraction of
+  //            panel width, at the nearest), speed: body lengths per second, every: seconds
+  //            between schools, max: schools at once, y: [y0, y1], z: [far, near] (0..1),
+  //            drift: true for jellyfish (rise and pulse instead of swimming) }]
+  swimmers(o) {
+    const water = o.water || 'rgb(13,58,70)';
+    let schools = [], started = false;
+    const timers = o.kinds.map((k) => rnd(0, k.every ?? 20));
+    function spawn(k, w, h, anywhere) {
+      const z = rnd(...(k.z || [0.2, 0.9]));
+      const n = Math.round(rnd(...(k.n || [1, 1])));
+      const dir = Math.random() < 0.5 ? 1 : -1;
+      const len = (k.len ?? 0.04) * (0.35 + 0.65 * z);  // in panel widths
+      const spread = Math.sqrt(n) * len * 1.1;
+      const members = Array.from({ length: n }, (_, j) => ({
+        dx: j ? rnd(-spread, spread) * 1.4 : 0, dy: j ? rnd(-spread, spread) * 0.6 : 0,
+        sc: rnd(0.8, 1.15), ph: rnd(0, TAU), wob: rnd(0.7, 1.3),
+      }));
+      const vx = k.drift ? rnd(-0.15, 0.15) * len : (k.speed ?? 0.6) * len * rnd(0.8, 1.2) * dir;
+      const vy = k.drift ? -(k.speed ?? 0.15) * len * rnd(0.7, 1.3) : rnd(-0.04, 0.04) * len;
+      const x = anywhere ? rnd(0.05, 0.95) : (vx > 0 ? -spread * 1.5 - len : 1 + spread * 1.5 + len);
+      const [y0, y1] = k.y || [0.2, 0.8];
+      const y = k.drift && !anywhere ? y1 + 0.05 : rnd(y0, y1);
+      schools.push({ k, z, band: Math.round(z * (BANDS - 1)), len, members, x, y, vx, vy, spread, src: `art/below/sprites/${k.s}.webp` });
+      schools.sort((p, q) => p.z - q.z);                  // far ones first
+    }
+    o.kinds.forEach((k) => loadImage(`art/below/sprites/${k.s}.webp`));
+    return {
+      draw(ctx, w, h, t, dt, a, wt, ox, oy) {
+        if (!started) {                                   // arrive to a scene that is already alive
+          started = true;
+          o.kinds.forEach((k) => { for (let i = 0; i < (k.start ?? 1); i++) spawn(k, w, h, true); });
+        }
+        o.kinds.forEach((k, i) => {
+          timers[i] -= dt;
+          if (timers[i] <= 0) {
+            timers[i] = (k.every ?? 20) * rnd(0.6, 1.4);
+            if (schools.filter((s) => s.k === k).length < (k.max ?? 2)) spawn(k, w, h, false);
+          }
+        });
+        schools = schools.filter((s) => {
+          s.x += s.vx * dt; s.y += s.vy * dt * w / h;     // vy is in panel widths, like everything else
+          const m = s.spread * 1.6 + s.len * 1.2;
+          return s.x > -m - 0.05 && s.x < 1 + m + 0.05 && s.y > -0.2 && s.y < 1.2;
+        });
+        ctx.save();
+        for (const s of schools) {
+          const b = spriteBand(s.src, s.band, water);
+          if (!b) continue;
+          const pxLen = s.len * w;                        // body length on screen
+          const scale = pxLen / (b.w - b.pad * 2);
+          const dw = b.w * scale, dh = b.h * scale;
+          const fade = Math.min(1, Math.min(s.x + s.spread, 1 - s.x + s.spread) * 8 + 0.4);
+          ctx.globalAlpha = Math.max(0, (o.alpha ?? 0.92) * (0.6 + 0.4 * s.z) * wt * Math.min(1, fade));
+          for (const m of s.members) {
+            const k = s.k, sp = (k.drift ? 1.1 : 3.2) * m.wob;
+            const x = ox + (s.x + m.dx + Math.sin(t * 0.3 * m.wob + m.ph) * s.len * 0.25) * w;
+            const y = oy + s.y * h + (m.dy + Math.sin(t * 0.5 * m.wob + m.ph) * s.len * 0.15) * w;
+            ctx.save();
+            ctx.translate(x, y);
+            if (k.drift) {                                 // a bell pulsing as it rises
+              const pulse = Math.sin(t * sp + m.ph);
+              ctx.scale(m.sc * (1 + 0.06 * pulse), m.sc * (1 - 0.08 * pulse));
+            } else {
+              ctx.scale(m.sc * (s.vx < 0 ? -1 : 1), m.sc);
+              ctx.rotate(s.vy / (Math.abs(s.vx) + 1e-6) * 0.5 + Math.sin(t * 0.7 * m.wob + m.ph) * 0.04);
+              ctx.transform(1, 0, Math.sin(t * sp * (k.tail ?? 1) + m.ph) * 0.04, 1, 0, 0);   // a little body flex
+            }
+            ctx.drawImage(b.c, -dw / 2, -dh / 2, dw, dh);
+            ctx.restore();
+          }
+        }
+        ctx.restore();
+      },
+    };
+  },
+
   // ---- the signal itself, drawn into the picture ----
 
   // a live spectrogram inside a region of the picture, blended like light: the
